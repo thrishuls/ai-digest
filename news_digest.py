@@ -42,7 +42,7 @@ COMPANIES_COUNT = 8
 
 # ---------- Endpoints / model IDs ----------
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL = "qwen/qwen3.6-plus:free"
+OPENROUTER_MODEL = "meta-llama/llama-3.3-70b-instruct:free"  # https://openrouter.ai/meta-llama/llama-3.3-70b-instruct:free
 GEMINI_MODEL = "gemini-2.5-flash"
 
 # ---------- Env ----------
