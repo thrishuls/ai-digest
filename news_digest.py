@@ -808,6 +808,64 @@ body{
 .back-link{display:inline-block;margin:0 0 16px;padding:18px 20px 0;color:var(--accent);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;}
 .back-link:hover{text-decoration:underline;}
 .empty-state{padding:48px 20px;color:var(--ink-3);font-family:var(--serif);font-style:italic;font-size:16px;text-align:center;}
+
+/* ===== Background palettes (data-bg) ===== */
+.digest-root[data-bg="cream"]{--paper:oklch(0.962 0.018 82);--paper-2:oklch(0.94 0.022 82);--paper-3:oklch(0.91 0.025 82);--ink:oklch(0.18 0.012 60);--ink-2:oklch(0.32 0.012 60);--ink-3:oklch(0.5 0.012 60);--ink-4:oklch(0.7 0.012 60);--rule:oklch(0.82 0.02 70);}
+.digest-root[data-bg="offwhite"]{--paper:oklch(0.985 0.003 100);--paper-2:oklch(0.96 0.003 100);--paper-3:oklch(0.92 0.004 100);--ink:oklch(0.16 0.005 240);--ink-2:oklch(0.32 0.005 240);--ink-3:oklch(0.52 0.005 240);--ink-4:oklch(0.72 0.005 240);--rule:oklch(0.85 0.005 240);}
+.digest-root[data-bg="stone"]{--paper:oklch(0.9 0.008 70);--paper-2:oklch(0.86 0.01 70);--paper-3:oklch(0.82 0.012 70);--ink:oklch(0.2 0.01 60);--ink-2:oklch(0.34 0.01 60);--ink-3:oklch(0.5 0.01 60);--ink-4:oklch(0.68 0.01 60);--rule:oklch(0.74 0.012 70);}
+.digest-root[data-bg="sage"]{--paper:oklch(0.945 0.018 145);--paper-2:oklch(0.92 0.022 145);--paper-3:oklch(0.88 0.025 145);--ink:oklch(0.2 0.018 160);--ink-2:oklch(0.34 0.018 160);--ink-3:oklch(0.5 0.018 160);--ink-4:oklch(0.68 0.018 160);--rule:oklch(0.78 0.02 150);}
+.digest-root[data-bg="midnight"]{--paper:oklch(0.155 0.012 60);--paper-2:oklch(0.19 0.012 60);--paper-3:oklch(0.23 0.014 60);--ink:oklch(0.95 0.018 82);--ink-2:oklch(0.85 0.018 82);--ink-3:oklch(0.65 0.018 82);--ink-4:oklch(0.45 0.012 60);--rule:oklch(0.32 0.012 60);}
+.digest-root.dark{--paper:oklch(0.155 0.012 60);--paper-2:oklch(0.19 0.012 60);--paper-3:oklch(0.23 0.014 60);--ink:oklch(0.95 0.018 82);--ink-2:oklch(0.85 0.018 82);--ink-3:oklch(0.65 0.018 82);--ink-4:oklch(0.45 0.012 60);--rule:oklch(0.32 0.012 60);}
+
+/* ===== Display fonts (data-fonts) ===== */
+.digest-root[data-fonts="fraunces"]{--serif:"Fraunces","Newsreader",Georgia,serif;--serif-display:"Fraunces","DM Serif Display",Georgia,serif;}
+.digest-root[data-fonts="playfair"]{--serif:"Playfair Display",Georgia,serif;--serif-display:"Playfair Display",Georgia,serif;}
+.digest-root[data-fonts="newsreader"]{--serif:"Newsreader",Georgia,serif;--serif-display:"DM Serif Display",Georgia,serif;}
+.digest-root[data-fonts="garamond"]{--serif:"EB Garamond",Georgia,serif;--serif-display:"EB Garamond",Georgia,serif;}
+.digest-root[data-fonts="instrument"]{--serif:"Instrument Serif",Georgia,serif;--serif-display:"Instrument Serif",Georgia,serif;}
+
+/* ===== Density (data-density) ===== */
+.digest-root[data-density="compact"] .story-main{padding:12px 16px;}
+.digest-root[data-density="compact"] .story-headline{font-size:22px;line-height:1.08;}
+.digest-root[data-density="compact"] .story-num{font-size:56px;}
+.digest-root[data-density="compact"] .story-summary-wrap{margin-top:4px;}
+.digest-root[data-density="comfy"] .story-main{padding:22px 18px;}
+.digest-root[data-density="comfy"] .story-headline{font-size:28px;line-height:1.04;}
+.digest-root[data-density="comfy"] .story-num{font-size:84px;}
+
+/* ===== Settings drawer ===== */
+.settings-toggle{position:fixed;top:14px;right:14px;z-index:50;width:40px;height:40px;border-radius:50%;background:var(--paper);border:1px solid var(--rule);cursor:pointer;display:grid;place-items:center;color:var(--ink-2);box-shadow:0 2px 10px rgba(0,0,0,0.10);transition:transform 0.25s ease,color 0.2s ease,border-color 0.2s ease;font-family:var(--serif-display);font-weight:600;font-size:18px;line-height:1;}
+.settings-toggle:hover{color:var(--ink);border-color:var(--ink-3);transform:rotate(-8deg);}
+.settings-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.42);z-index:60;opacity:0;pointer-events:none;transition:opacity 0.25s ease;}
+.settings-backdrop.open{opacity:1;pointer-events:auto;}
+.settings-drawer{position:fixed;top:0;right:0;bottom:0;z-index:70;width:340px;max-width:92vw;background:var(--paper);color:var(--ink);border-left:1px solid var(--rule);transform:translateX(105%);transition:transform 0.32s cubic-bezier(0.2,0.8,0.2,1);overflow-y:auto;padding:22px 22px 36px;-webkit-overflow-scrolling:touch;}
+.settings-drawer.open{transform:translateX(0);box-shadow:-6px 0 26px rgba(0,0,0,0.14);}
+.settings-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:20px;}
+.settings-title{font-family:var(--serif-display);font-weight:700;font-size:24px;letter-spacing:-0.012em;color:var(--ink);}
+.settings-close{background:transparent;border:1px solid var(--rule);width:30px;height:30px;border-radius:50%;cursor:pointer;color:var(--ink-3);display:grid;place-items:center;font-size:18px;line-height:1;padding:0;transition:color 0.2s ease,border-color 0.2s ease;}
+.settings-close:hover{color:var(--ink);border-color:var(--ink-3);}
+.settings-section{margin-bottom:22px;}
+.settings-label{font-family:var(--mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;display:block;}
+.settings-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
+.bg-sw,.font-sw{appearance:none;border:1px solid var(--rule);border-radius:6px;height:54px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:4px 1px;transition:transform 0.15s ease,border-color 0.15s ease,box-shadow 0.15s ease;font:inherit;overflow:hidden;min-width:0;}
+.bg-sw:hover,.font-sw:hover{transform:translateY(-1px);}
+.bg-sw.on,.font-sw.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--accent);}
+.bg-sw-glyph{font-family:var(--serif-display);font-weight:600;font-size:16px;line-height:1;}
+.font-sw{background:var(--paper-2);color:var(--ink);}
+.font-sw-glyph{font-size:22px;line-height:1;color:var(--ink);}
+.bg-sw-label,.font-sw-label{font-family:var(--mono);font-size:7.5px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.7;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.settings-density{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--paper-2);padding:4px;border-radius:6px;border:1px solid var(--rule);}
+.density-btn{appearance:none;border:0;background:transparent;cursor:pointer;padding:9px 4px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);border-radius:4px;transition:background 0.2s ease,color 0.2s ease;}
+.density-btn:hover{color:var(--ink);}
+.density-btn.on{background:var(--ink);color:var(--paper);}
+.settings-row{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.toggle-switch{position:relative;width:44px;height:24px;background:var(--paper-3);border:1px solid var(--rule);border-radius:999px;cursor:pointer;transition:background 0.2s ease,border-color 0.2s ease;flex-shrink:0;padding:0;}
+.toggle-switch::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;background:var(--paper);border:1px solid var(--rule);border-radius:50%;transition:left 0.22s cubic-bezier(0.4,0.8,0.2,1);}
+.toggle-switch.on{background:var(--accent);border-color:var(--accent);}
+.toggle-switch.on::after{left:22px;border-color:var(--accent);}
+.accent-picker{width:100%;height:38px;border-radius:6px;border:1px solid var(--rule);cursor:pointer;background:transparent;padding:2px;}
+.settings-reset{width:100%;margin-top:8px;padding:10px;background:transparent;border:1px solid var(--rule);border-radius:6px;cursor:pointer;font-family:var(--mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);transition:color 0.2s ease,border-color 0.2s ease;}
+.settings-reset:hover{color:var(--accent);border-color:var(--accent);}
 """
 
 PAGE_JS = r"""
@@ -885,12 +943,99 @@ PAGE_JS = r"""
 })();
 """
 
+# Settings drawer logic. Applies user prefs (background, font, density, dark
+# mode, accent) on every page (index + archives). The drawer UI itself is
+# only injected on the index page.
+SETTINGS_JS = r"""
+(function(){
+  var KEY='ai-daily-settings';
+  var DEFAULTS={bg:'cream',font:'fraunces',density:'regular',dark:false,accent:''};
+  function load(){try{return Object.assign({},DEFAULTS,JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){return Object.assign({},DEFAULTS);}}
+  function save(s){try{localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+  function apply(s){
+    var r=document.querySelector('.digest-root');
+    if(!r) return;
+    r.setAttribute('data-bg',s.bg||'cream');
+    r.setAttribute('data-fonts',s.font||'fraunces');
+    r.setAttribute('data-density',s.density||'regular');
+    r.classList.toggle('dark',!!s.dark);
+    if(s.accent) r.style.setProperty('--accent',s.accent);
+    else r.style.removeProperty('--accent');
+  }
+  var s=load();
+  apply(s);
+
+  var toggle=document.querySelector('.settings-toggle');
+  var drawer=document.querySelector('.settings-drawer');
+  var backdrop=document.querySelector('.settings-backdrop');
+  if(!toggle||!drawer||!backdrop) return;  // not rendered (e.g. archive page)
+
+  function open(){drawer.classList.add('open');backdrop.classList.add('open');drawer.setAttribute('aria-hidden','false');}
+  function close(){drawer.classList.remove('open');backdrop.classList.remove('open');drawer.setAttribute('aria-hidden','true');}
+  toggle.addEventListener('click',open);
+  backdrop.addEventListener('click',close);
+  var closeBtn=document.querySelector('.settings-close');
+  if(closeBtn) closeBtn.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  function syncSwatches(group,key){
+    document.querySelectorAll('.'+group).forEach(function(b){
+      b.classList.toggle('on',b.dataset[key]===s[key]);
+      b.addEventListener('click',function(){
+        s[key]=b.dataset[key];
+        document.querySelectorAll('.'+group).forEach(function(o){o.classList.toggle('on',o===b);});
+        save(s);apply(s);
+      });
+    });
+  }
+  syncSwatches('bg-sw','bg');
+  syncSwatches('font-sw','font');
+  syncSwatches('density-btn','density');
+
+  var darkSw=document.querySelector('.dark-toggle');
+  if(darkSw){
+    darkSw.classList.toggle('on',!!s.dark);
+    darkSw.addEventListener('click',function(){
+      s.dark=!s.dark;
+      darkSw.classList.toggle('on',s.dark);
+      save(s);apply(s);
+    });
+  }
+
+  var accentInput=document.querySelector('.accent-picker');
+  if(accentInput){
+    accentInput.value=s.accent||'#FF6B00';
+    accentInput.addEventListener('input',function(){
+      s.accent=accentInput.value;
+      save(s);apply(s);
+    });
+  }
+
+  var resetBtn=document.querySelector('.settings-reset');
+  if(resetBtn){
+    resetBtn.addEventListener('click',function(){
+      s=Object.assign({},DEFAULTS);
+      save(s);apply(s);
+      document.querySelectorAll('.bg-sw').forEach(function(o){o.classList.toggle('on',o.dataset.bg===s.bg);});
+      document.querySelectorAll('.font-sw').forEach(function(o){o.classList.toggle('on',o.dataset.font===s.font);});
+      document.querySelectorAll('.density-btn').forEach(function(o){o.classList.toggle('on',o.dataset.density===s.density);});
+      if(darkSw) darkSw.classList.toggle('on',false);
+      if(accentInput) accentInput.value='#FF6B00';
+    });
+  }
+})();
+"""
+
 GOOGLE_FONTS_LINK = (
     'https://fonts.googleapis.com/css2?'
     'family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500'
+    '&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500'
+    '&family=Newsreader:ital,wght@0,400;0,500;1,400'
+    '&family=DM+Serif+Display:ital@0;1'
+    '&family=EB+Garamond:ital,wght@0,500;0,600;1,500'
+    '&family=Instrument+Serif:ital@0;1'
     '&family=JetBrains+Mono:wght@400;500'
     '&family=Inter+Tight:wght@400;500;600'
-    '&family=Newsreader:ital,wght@0,400;0,500;1,400'
     '&display=swap'
 )
 
@@ -1004,11 +1149,37 @@ def render_page(
             archive_block + foot
         )
 
+    # Settings drawer is only rendered on the index page (today's edition).
+    # Saved settings are still applied on archive pages — only the picker UI
+    # is hidden there.
+    settings_ui = "" if is_archive else _render_settings_drawer()
+
+    # FOUC-prevention: read saved settings synchronously before paint, so the
+    # user's saved bg / font / density / dark / accent apply immediately and
+    # don't flash from defaults on each load.
+    fouc_script = (
+        '<script>(function(){try{'
+        "var s=JSON.parse(localStorage.getItem('ai-daily-settings')||'{}');"
+        "var r=document.querySelector('.digest-root');"
+        "if(!r)return;"
+        "if(s.bg)r.setAttribute('data-bg',s.bg);"
+        "if(s.font)r.setAttribute('data-fonts',s.font);"
+        "if(s.density)r.setAttribute('data-density',s.density);"
+        "if(s.dark)r.classList.add('dark');"
+        "if(s.accent)r.style.setProperty('--accent',s.accent);"
+        '}catch(e){}})();</script>'
+    )
+
     return (
         head +
-        '<div class="digest-root">' + body_inner + '</div>' +
-        f'<script>{PAGE_JS}</script>' +
-        '<script>'
+        '<div class="digest-root" data-bg="cream" data-fonts="fraunces" data-density="regular">'
+        + fouc_script
+        + body_inner
+        + settings_ui
+        + '</div>'
+        + f'<script>{PAGE_JS}</script>'
+        + f'<script>{SETTINGS_JS}</script>'
+        + '<script>'
         "if('serviceWorker' in navigator){"
         "window.addEventListener('load',function(){"
         "navigator.serviceWorker.register('service-worker.js')"
@@ -1016,8 +1187,82 @@ def render_page(
         ".catch(function(){});"
         "});"
         "}"
-        '</script>' +
-        '</body></html>'
+        '</script>'
+        + '</body></html>'
+    )
+
+
+def _render_settings_drawer() -> str:
+    """The Aa floating button + slide-out drawer with bg/font/density/dark/accent
+    pickers. Reads default values from CSS — JS wires up state and persistence."""
+    bg_swatches = [
+        ("cream",    "Cream",    "oklch(0.962 0.018 82)",  "oklch(0.18 0.012 60)"),
+        ("offwhite", "Off-white","oklch(0.985 0.003 100)", "oklch(0.16 0.005 240)"),
+        ("stone",    "Stone",    "oklch(0.9 0.008 70)",    "oklch(0.2 0.01 60)"),
+        ("sage",     "Sage",     "oklch(0.945 0.018 145)", "oklch(0.2 0.018 160)"),
+        ("midnight", "Midnight", "oklch(0.155 0.012 60)",  "oklch(0.95 0.018 82)"),
+    ]
+    bg_html = "".join(
+        f'<button class="bg-sw" data-bg="{bg_id}" type="button" '
+        f'style="background:{bg};color:{ink};">'
+        f'<span class="bg-sw-glyph">Aa</span>'
+        f'<span class="bg-sw-label">{label}</span>'
+        f'</button>'
+        for bg_id, label, bg, ink in bg_swatches
+    )
+
+    font_swatches = [
+        ("fraunces",   "Fraunces", "'Fraunces', serif",         "600"),
+        ("playfair",   "Playfair", "'Playfair Display', serif", "700"),
+        ("newsreader", "News.",    "'DM Serif Display', serif", "400"),
+        ("garamond",   "Garamond", "'EB Garamond', serif",      "600"),
+        ("instrument", "Instr.",   "'Instrument Serif', serif", "400"),
+    ]
+    font_html = "".join(
+        f'<button class="font-sw" data-font="{f_id}" type="button">'
+        f'<span class="font-sw-glyph" style="font-family:{stack};font-weight:{w};">Aa</span>'
+        f'<span class="font-sw-label">{label}</span>'
+        f'</button>'
+        for f_id, label, stack, w in font_swatches
+    )
+
+    density_html = "".join(
+        f'<button class="density-btn" data-density="{d}" type="button">{d.capitalize()}</button>'
+        for d in ("compact", "regular", "comfy")
+    )
+
+    return (
+        '<button class="settings-toggle" aria-label="Settings" type="button">Aa</button>'
+        '<div class="settings-backdrop"></div>'
+        '<aside class="settings-drawer" aria-hidden="true">'
+        '<div class="settings-header">'
+        '<span class="settings-title">Settings</span>'
+        '<button class="settings-close" aria-label="Close" type="button">&times;</button>'
+        '</div>'
+        '<div class="settings-section">'
+        '<span class="settings-label">Background</span>'
+        f'<div class="settings-grid">{bg_html}</div>'
+        '</div>'
+        '<div class="settings-section">'
+        '<span class="settings-label">Display font</span>'
+        f'<div class="settings-grid">{font_html}</div>'
+        '</div>'
+        '<div class="settings-section">'
+        '<span class="settings-label">Density</span>'
+        f'<div class="settings-density">{density_html}</div>'
+        '</div>'
+        '<div class="settings-section">'
+        '<div class="settings-row">'
+        '<span class="settings-label" style="margin-bottom:0;">Dark mode</span>'
+        '<button class="toggle-switch dark-toggle" aria-label="Toggle dark mode" type="button"></button>'
+        '</div>'
+        '</div>'
+        '<div class="settings-section">'
+        '<span class="settings-label">Accent colour</span>'
+        '<input class="accent-picker" type="color" value="#FF6B00" aria-label="Accent colour">'
+        '</div>'
+        '<button class="settings-reset" type="button">Reset to defaults</button>'
+        '</aside>'
     )
 
 
