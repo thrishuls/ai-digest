@@ -39,9 +39,10 @@ Nine sequential stages inside `news_digest.py`:
 3. **Score** — batches of 20 articles scored by the LLM against an impact
    rubric. Each gets `is_ai`, `india_relevance`, `impact_score`,
    `trending_score`, `category`.
-4. **LLM call** — OpenRouter (Qwen) primary; any failure falls through to
-   Gemini 2.5 Flash. Both fail → defaults to zeros, pipeline degrades
-   gracefully (yesterday's site stays).
+4. **LLM call** — OpenRouter (Qwen3 235B A22B free tier) primary; any
+   failure falls through to Gemini 2.5 Flash via Google's direct API. Both
+   fail → defaults to zeros, pipeline degrades gracefully (yesterday's site
+   stays).
 5. **Rank & split** — weighted `final_score`, then split into India and
    global pools (8 + 4). Either pool back-fills the other if under-supplied.
 6. **Rewrite** — one LLM call rewrites all 12 into editorial copy: crisp
@@ -65,10 +66,11 @@ Nine sequential stages inside `news_digest.py`:
 
 ### 1. Get two API keys
 
-- **OpenRouter** — https://openrouter.ai → sign in → API key. The
-  `qwen/qwen3.6-plus:free` model has rate limits but no cost. If the model
-  ID is unavailable, swap to a current free Qwen ID at the top of
-  `news_digest.py`.
+- **OpenRouter** — https://openrouter.ai → sign in → API key. The default
+  model is `qwen/qwen3-235b-a22b:free` — large MoE Qwen3, capable, free,
+  and supports the `response_format: json_object` we need. If the ID
+  becomes unavailable, browse https://openrouter.ai/models?max_price=0 and
+  swap the `OPENROUTER_MODEL` constant near the top of `news_digest.py`.
 - **Google Gemini** — https://aistudio.google.com/app/apikey → API key.
   Free tier handles a daily run easily and acts as the OpenRouter fallback.
 
