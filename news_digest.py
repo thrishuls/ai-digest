@@ -50,11 +50,9 @@ OPENROUTER_MODELS = [
     "nvidia/nemotron-3-super-120b-a12b:free",    # Nemotron 120B MoE, 256K ctx
     "google/gemma-3-27b-it:free",                # Gemma 3 27B, 128K ctx
 ]
-GEMINI_MODEL = "gemini-2.5-flash"
 
 # ---------- Env ----------
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 OPENROUTER_REFERER = os.getenv(
     "OPENROUTER_REFERER", "https://github.com/ai-digest/ai-digest"
 )
@@ -266,60 +264,41 @@ def _clamp_float(v, lo: float, hi: float) -> float:
 
 
 # =========================================================================
-# Stage 4 — LLM wrapper (OpenRouter primary, Gemini fallback)
+# Stage 4 — LLM wrapper (OpenRouter only, with multi-model fallback)
 # =========================================================================
 def call_llm(prompt: str, json_mode: bool = True) -> str:
     global _last_llm_provider
 
-    if OPENROUTER_API_KEY:
-        for model_id in OPENROUTER_MODELS:
-            try:
-                headers = {
-                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                    "HTTP-Referer": OPENROUTER_REFERER,
-                    "X-Title": "AI Daily Digest",
-                    "Content-Type": "application/json",
-                }
-                body: dict = {
-                    "model": model_id,
-                    "messages": [{"role": "user", "content": prompt}],
-                }
-                if json_mode:
-                    body["response_format"] = {"type": "json_object"}
-                r = requests.post(OPENROUTER_URL, headers=headers, json=body, timeout=LLM_TIMEOUT)
-                r.raise_for_status()
-                data = r.json()
-                content = (data.get("choices") or [{}])[0].get("message", {}).get("content", "")
-                if content:
-                    _last_llm_provider = f"openrouter:{model_id}"
-                    print(f"  [llm] openrouter ({model_id})")
-                    return content
-                raise ValueError("empty content")
-            except Exception as exc:
-                print(f"  [warn] openrouter {model_id} failed: {exc}")
-        print("  [warn] all OpenRouter models failed; trying Gemini")
+    if not OPENROUTER_API_KEY:
+        print("  [warn] OPENROUTER_API_KEY not set")
+        return ""
 
-    if GEMINI_API_KEY:
+    for model_id in OPENROUTER_MODELS:
         try:
-            import google.generativeai as genai
-
-            genai.configure(api_key=GEMINI_API_KEY)
-            model = genai.GenerativeModel(GEMINI_MODEL)
-            gen_cfg = {"response_mime_type": "application/json"} if json_mode else {}
-            resp = model.generate_content(
-                prompt,
-                generation_config=gen_cfg or None,
-                request_options={"timeout": LLM_TIMEOUT},
-            )
-            text = (getattr(resp, "text", "") or "").strip()
-            if text:
-                _last_llm_provider = "gemini"
-                print("  [llm] gemini")
-                return text
-            raise ValueError("empty content from gemini")
+            headers = {
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "HTTP-Referer": OPENROUTER_REFERER,
+                "X-Title": "AI Daily Digest",
+                "Content-Type": "application/json",
+            }
+            body: dict = {
+                "model": model_id,
+                "messages": [{"role": "user", "content": prompt}],
+            }
+            if json_mode:
+                body["response_format"] = {"type": "json_object"}
+            r = requests.post(OPENROUTER_URL, headers=headers, json=body, timeout=LLM_TIMEOUT)
+            r.raise_for_status()
+            data = r.json()
+            content = (data.get("choices") or [{}])[0].get("message", {}).get("content", "")
+            if content:
+                _last_llm_provider = f"openrouter:{model_id}"
+                print(f"  [llm] openrouter ({model_id})")
+                return content
+            raise ValueError("empty content")
         except Exception as exc:
-            print(f"  [warn] gemini failed: {exc}")
-
+            print(f"  [warn] openrouter {model_id} failed: {exc}")
+    print("  [warn] all OpenRouter models failed")
     return ""
 
 

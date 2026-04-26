@@ -41,10 +41,10 @@ Nine sequential stages inside `news_digest.py`:
    `trending_score`, `category`.
 4. **LLM call** — Tries a list of free OpenRouter models in order
    (`OPENROUTER_MODELS` constant; defaults to Qwen3-Next 80B → Nemotron 120B
-   → Gemma 3 27B). If every OpenRouter model fails or returns empty, falls
-   through to Gemini 2.5 Flash via Google's direct API. All providers fail
-   → defaults to zeros, pipeline degrades gracefully (yesterday's site
-   stays).
+   → Gemma 3 27B). The first one to return content wins. If every model
+   fails, the pipeline degrades gracefully (zero scoring, yesterday's site
+   stays). One bad model ID won't kill a run — the loop just moves on to
+   the next.
 5. **Rank & split** — weighted `final_score`, then split into India and
    global pools (8 + 4). Either pool back-fills the other if under-supplied.
 6. **Rewrite** — one LLM call rewrites all 12 into editorial copy: crisp
@@ -66,7 +66,7 @@ Nine sequential stages inside `news_digest.py`:
 
 ## Setup (one-time, ~10 minutes)
 
-### 1. Get two API keys
+### 1. Get an OpenRouter API key
 
 - **OpenRouter** — https://openrouter.ai → sign in → API key. The pipeline
   tries a list of free models (`OPENROUTER_MODELS` near the top of
@@ -76,8 +76,6 @@ Nine sequential stages inside `news_digest.py`:
   `curl https://openrouter.ai/api/v1/models | jq '.data[] | select(.pricing.prompt=="0") | .id'`
   — only models that include `response_format` in `supported_parameters`
   will work with our JSON-mode requirement.
-- **Google Gemini** — https://aistudio.google.com/app/apikey → API key.
-  Free tier handles a daily run easily and acts as the OpenRouter fallback.
 
 ### 2. Push to GitHub
 
@@ -100,7 +98,6 @@ Repo → **Settings → Secrets and variables → Actions → New repository sec
 | Name | Value |
 |---|---|
 | `OPENROUTER_API_KEY` | from step 1 |
-| `GEMINI_API_KEY` | from step 1 |
 
 ### 4. Enable GitHub Pages
 
@@ -208,12 +205,17 @@ User-Agents. The pipeline is fail-soft — one broken feed doesn't stop the
 others. If a source goes dark for a few days, replace the URL in
 `sources.yaml` or drop it.
 
-**OpenRouter 429.** Free-tier limits. Logs show `[warn] openrouter failed:
-429 …` then `[llm] gemini` on the next line. Expected, not a bug.
+**OpenRouter 429.** Free-tier limits. The loop tries the next model in the
+list automatically — logs show `[warn] openrouter <model> failed: 429 …`
+then `[llm] openrouter (next-model)` on the next line. If all three hit
+429, wait a few minutes and re-run.
 
 **`Setting up.` page never updates.** Check **Actions → latest run**:
 - Did the build step complete? If logs say `No AI stories found`, scoring
-  returned zero `is_ai=true` — likely both LLMs failed. Re-run the workflow.
+  returned zero `is_ai=true` — likely every OpenRouter model failed.
+  Re-run the workflow, or check that your API key is valid and the model
+  IDs in `OPENROUTER_MODELS` are still listed at
+  `https://openrouter.ai/api/v1/models`.
 - Did `Commit and push` say `No site changes to commit`? That happens if the
   HTML output is byte-identical to what's already in `docs/` (no
   meaningful change today). Rare in practice.
