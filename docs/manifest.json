@@ -1,0 +1,19 @@
+{
+  "name": "The AI Daily",
+  "short_name": "AI Daily",
+  "description": "Daily editorial digest of AI news, 65% India-focused, 35% global. Updates every morning at 08:00 IST.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3ecd9",
+  "theme_color": "#FF6B00",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

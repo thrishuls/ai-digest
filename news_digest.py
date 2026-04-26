@@ -46,9 +46,12 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # that support response_format=json_object. Verify against the OpenRouter API
 # at https://openrouter.ai/api/v1/models if any 404s show up in logs.
 OPENROUTER_MODELS = [
-    "qwen/qwen3-next-80b-a3b-instruct:free",     # Qwen3-Next 80B MoE, 256K ctx
+    # Nemotron first — responds reliably on free tier. Qwen and Gemma free
+    # tiers are heavily rate-limited (429) during peak hours, so they sit
+    # behind as backups instead of burning the first call on a rate limit.
     "nvidia/nemotron-3-super-120b-a12b:free",    # Nemotron 120B MoE, 256K ctx
     "google/gemma-3-27b-it:free",                # Gemma 3 27B, 128K ctx
+    "qwen/qwen3-next-80b-a3b-instruct:free",     # Qwen3-Next 80B MoE, 256K ctx
 ]
 
 # ---------- Env ----------
@@ -207,13 +210,27 @@ def score_articles(articles: list[dict]) -> list[dict]:
     for start in range(0, len(articles), BATCH_SIZE):
         batch = articles[start : start + BATCH_SIZE]
         results = _score_batch(batch)
+        ai_count = 0
         for a, s in zip(batch, results):
             a["is_ai"] = bool(s.get("is_ai", False))
             a["india_relevance"] = _clamp_float(s.get("india_relevance", 0.0), 0.0, 1.0)
             a["impact_score"] = _clamp_float(s.get("impact_score", 0), 0.0, 10.0)
             a["trending_score"] = _clamp_float(s.get("trending_score", 0), 0.0, 10.0)
             a["category"] = s.get("category", "other")
+            if a["is_ai"]:
+                ai_count += 1
             scored.append(a)
+        # Diagnostic: how many were tagged AI, and a peek at the first parsed
+        # item so we can spot if the model is returning unexpected key names.
+        sample = results[0] if results else {}
+        sample_keys = list(sample.keys())[:6] if isinstance(sample, dict) else type(sample).__name__
+        print(
+            f"  batch {start // BATCH_SIZE + 1}: "
+            f"{ai_count}/{len(batch)} is_ai=true "
+            f"(sample is_ai={sample.get('is_ai') if isinstance(sample, dict) else '?'}, "
+            f"impact={sample.get('impact_score') if isinstance(sample, dict) else '?'}, "
+            f"keys={sample_keys})"
+        )
     return scored
 
 
@@ -973,7 +990,10 @@ def render_page(
         '<meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<meta name="robots" content="noindex,nofollow">'
-        '<meta name="theme-color" content="#f3ecd9">'
+        '<meta name="theme-color" content="#FF6B00">'
+        '<link rel="manifest" href="manifest.json">'
+        '<link rel="apple-touch-icon" href="icon.svg">'
+        '<link rel="icon" type="image/svg+xml" href="icon.svg">'
         f'<title>The {title} &mdash; {date_safe}</title>'
         '<link rel="preconnect" href="https://fonts.googleapis.com">'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -998,6 +1018,15 @@ def render_page(
         head +
         '<div class="digest-root">' + body_inner + '</div>' +
         f'<script>{PAGE_JS}</script>' +
+        '<script>'
+        "if('serviceWorker' in navigator){"
+        "window.addEventListener('load',function(){"
+        "navigator.serviceWorker.register('service-worker.js')"
+        ".then(function(reg){if(reg)reg.update();})"
+        ".catch(function(){});"
+        "});"
+        "}"
+        '</script>' +
         '</body></html>'
     )
 
