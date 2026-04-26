@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -v --max-time 10 \"https://techcrunch.com/category/artificial-intelligence/feed/\")",
+      "Bash(python -c \"import ast, sys; ast.parse\\(open\\('news_digest.py', encoding='utf-8'\\).read\\(\\)\\); print\\('syntax ok'\\)\")",
+      "Bash(pip show *)",
+      "Bash(py --version)",
+      "Bash(py -3.11 --version)",
+      "Read(//c/Users/thris/AppData/Local/Programs/**)",
+      "Read(//c/Python311/**)",
+      "Read(//c/Python312/**)",
+      "Read(//c/Python310/**)",
+      "Bash(where python.exe)",
+      "Bash(L:/AIDailyDigest/.venv/Scripts/python.exe -c \"print\\('alive'\\)\")",
+      "PowerShell($candidates = @\\(\"python\", \"python3\", \"py\", \"C:\\\\Users\\\\thris\\\\anaconda3\\\\python.exe\", \"C:\\\\ProgramData\\\\Anaconda3\\\\python.exe\", \"C:\\\\Python311\\\\python.exe\", \"C:\\\\Python312\\\\python.exe\", \"C:\\\\Python313\\\\python.exe\", \"C:\\\\Program Files\\\\Python311\\\\python.exe\", \"C:\\\\Program Files\\\\Python312\\\\python.exe\"\\); foreach \\($c in $candidates\\) { if \\(Test-Path $c -ErrorAction SilentlyContinue\\) { Write-Output \"EXISTS: $c\" } else { try { $v = & $c --version 2>$null; if \\($LASTEXITCODE -eq 0\\) { Write-Output \"ON-PATH: $c -> $v\" } } catch {} } })",
+      "Bash(python -c \"\")",
+      "Bash(node -e \"const s=require\\('fs'\\).readFileSync\\('news_digest.py','utf8'\\); let p=0,b=0,c=0; for\\(const ch of s\\){if\\(ch==='\\('\\)p++; else if\\(ch==='\\)'\\)p--; else if\\(ch==='['\\)b++; else if\\(ch===']'\\)b--; else if\\(ch==='{'\\)c++; else if\\(ch==='}'\\)c--;} console.log\\('parens:',p,'brackets:',b,'braces:',c\\);\")",
+      "Read(//c/Users/thris/Downloads/**)",
+      "Bash(mkdir -p /tmp/text-streaming)",
+      "Read(//tmp/**)",
+      "Bash(unzip -o \"/c/Users/thris/Downloads/Text streaming.zip\")",
+      "Bash(unzip -o \"/c/Users/thris/Downloads/Text streaming.zip\" -d L:/AIDailyDigest/_design_handoff/)",
+      "Bash(node -e \"const s=require\\('fs'\\).readFileSync\\('news_digest.py','utf8'\\); let p=0,b=0,c=0,inS=null,esc=false; for\\(let i=0;i<s.length;i++\\){const ch=s[i]; if\\(esc\\){esc=false;continue;} if\\(inS\\){if\\(ch==='\\\\\\\\\\\\\\\\'\\){esc=true;continue;} if\\(ch===inS\\)inS=null; continue;} if\\(ch==='\\\\\"'||ch===\\\\\"'\\\\\"\\)inS=ch; else if\\(ch==='\\('\\)p++; else if\\(ch==='\\)'\\)p--; else if\\(ch==='['\\)b++; else if\\(ch===']'\\)b--; else if\\(ch==='{'\\)c++; else if\\(ch==='}'\\)c--;} console.log\\('parens:',p,'brackets:',b,'braces:',c\\);\")",
+      "Bash(node _check.js news_digest.py)"
+    ]
+  }
+}

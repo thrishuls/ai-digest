@@ -1,0 +1,66 @@
+# RSS feeds for the AI Daily Digest.
+# region: "india" or "global". Used to bias the 65/35 split and as a fallback
+# signal when the LLM cannot confidently classify India-relevance.
+
+feeds:
+  # ---------- India (8) ----------
+  - name: Analytics India Magazine
+    url: https://analyticsindiamag.com/feed/
+    region: india
+
+  - name: Inc42
+    url: https://inc42.com/feed/
+    region: india
+
+  - name: MediaNama
+    url: https://www.medianama.com/feed/
+    region: india
+
+  - name: YourStory
+    url: https://yourstory.com/feed
+    region: india
+
+  - name: ET Tech
+    url: https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms
+    region: india
+
+  - name: Moneycontrol Tech
+    url: https://www.moneycontrol.com/rss/technology.xml
+    region: india
+
+  - name: The Hindu Sci-Tech
+    url: https://www.thehindu.com/sci-tech/feeder/default.rss
+    region: india
+
+  - name: Indian Express Tech
+    url: https://indianexpress.com/section/technology/feed/
+    region: india
+
+  # ---------- Global (7) ----------
+  - name: TechCrunch AI
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+    region: global
+
+  - name: The Verge AI
+    url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+    region: global
+
+  - name: VentureBeat AI
+    url: https://venturebeat.com/category/ai/feed/
+    region: global
+
+  - name: MIT Tech Review AI
+    url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+    region: global
+
+  - name: Ars Technica AI
+    url: https://arstechnica.com/ai/feed/
+    region: global
+
+  - name: Wired AI
+    url: https://www.wired.com/feed/tag/ai/latest/rss
+    region: global
+
+  - name: Hacker News (100+ pts)
+    url: https://hnrss.org/frontpage?points=100
+    region: global
