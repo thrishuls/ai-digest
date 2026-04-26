@@ -39,9 +39,11 @@ Nine sequential stages inside `news_digest.py`:
 3. **Score** — batches of 20 articles scored by the LLM against an impact
    rubric. Each gets `is_ai`, `india_relevance`, `impact_score`,
    `trending_score`, `category`.
-4. **LLM call** — OpenRouter (Qwen3 235B A22B free tier) primary; any
-   failure falls through to Gemini 2.5 Flash via Google's direct API. Both
-   fail → defaults to zeros, pipeline degrades gracefully (yesterday's site
+4. **LLM call** — Tries a list of free OpenRouter models in order
+   (`OPENROUTER_MODELS` constant; defaults to Qwen3-Next 80B → Nemotron 120B
+   → Gemma 3 27B). If every OpenRouter model fails or returns empty, falls
+   through to Gemini 2.5 Flash via Google's direct API. All providers fail
+   → defaults to zeros, pipeline degrades gracefully (yesterday's site
    stays).
 5. **Rank & split** — weighted `final_score`, then split into India and
    global pools (8 + 4). Either pool back-fills the other if under-supplied.
@@ -66,11 +68,14 @@ Nine sequential stages inside `news_digest.py`:
 
 ### 1. Get two API keys
 
-- **OpenRouter** — https://openrouter.ai → sign in → API key. The default
-  model is `qwen/qwen3-235b-a22b:free` — large MoE Qwen3, capable, free,
-  and supports the `response_format: json_object` we need. If the ID
-  becomes unavailable, browse https://openrouter.ai/models?max_price=0 and
-  swap the `OPENROUTER_MODEL` constant near the top of `news_digest.py`.
+- **OpenRouter** — https://openrouter.ai → sign in → API key. The pipeline
+  tries a list of free models (`OPENROUTER_MODELS` near the top of
+  `news_digest.py`); the default first choice is
+  `qwen/qwen3-next-80b-a3b-instruct:free`. To verify any slug or pick
+  alternatives, query the live API:
+  `curl https://openrouter.ai/api/v1/models | jq '.data[] | select(.pricing.prompt=="0") | .id'`
+  — only models that include `response_format` in `supported_parameters`
+  will work with our JSON-mode requirement.
 - **Google Gemini** — https://aistudio.google.com/app/apikey → API key.
   Free tier handles a daily run easily and acts as the OpenRouter fallback.
 

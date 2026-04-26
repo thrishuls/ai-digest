@@ -42,7 +42,14 @@ COMPANIES_COUNT = 8
 
 # ---------- Endpoints / model IDs ----------
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL = "qwen/qwen3-235b-a22b:free"  # https://openrouter.ai/qwen/qwen3-235b-a22b:free
+# Tried in order. First one that returns content wins. All must be free models
+# that support response_format=json_object. Verify against the OpenRouter API
+# at https://openrouter.ai/api/v1/models if any 404s show up in logs.
+OPENROUTER_MODELS = [
+    "qwen/qwen3-next-80b-a3b-instruct:free",     # Qwen3-Next 80B MoE, 256K ctx
+    "nvidia/nemotron-3-super-120b-a12b:free",    # Nemotron 120B MoE, 256K ctx
+    "google/gemma-3-27b-it:free",                # Gemma 3 27B, 128K ctx
+]
 GEMINI_MODEL = "gemini-2.5-flash"
 
 # ---------- Env ----------
@@ -265,30 +272,32 @@ def call_llm(prompt: str, json_mode: bool = True) -> str:
     global _last_llm_provider
 
     if OPENROUTER_API_KEY:
-        try:
-            headers = {
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "HTTP-Referer": OPENROUTER_REFERER,
-                "X-Title": "AI Daily Digest",
-                "Content-Type": "application/json",
-            }
-            body: dict = {
-                "model": OPENROUTER_MODEL,
-                "messages": [{"role": "user", "content": prompt}],
-            }
-            if json_mode:
-                body["response_format"] = {"type": "json_object"}
-            r = requests.post(OPENROUTER_URL, headers=headers, json=body, timeout=LLM_TIMEOUT)
-            r.raise_for_status()
-            data = r.json()
-            content = (data.get("choices") or [{}])[0].get("message", {}).get("content", "")
-            if content:
-                _last_llm_provider = "openrouter"
-                print("  [llm] openrouter")
-                return content
-            raise ValueError("empty content from openrouter")
-        except Exception as exc:
-            print(f"  [warn] openrouter failed: {exc}")
+        for model_id in OPENROUTER_MODELS:
+            try:
+                headers = {
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "HTTP-Referer": OPENROUTER_REFERER,
+                    "X-Title": "AI Daily Digest",
+                    "Content-Type": "application/json",
+                }
+                body: dict = {
+                    "model": model_id,
+                    "messages": [{"role": "user", "content": prompt}],
+                }
+                if json_mode:
+                    body["response_format"] = {"type": "json_object"}
+                r = requests.post(OPENROUTER_URL, headers=headers, json=body, timeout=LLM_TIMEOUT)
+                r.raise_for_status()
+                data = r.json()
+                content = (data.get("choices") or [{}])[0].get("message", {}).get("content", "")
+                if content:
+                    _last_llm_provider = f"openrouter:{model_id}"
+                    print(f"  [llm] openrouter ({model_id})")
+                    return content
+                raise ValueError("empty content")
+            except Exception as exc:
+                print(f"  [warn] openrouter {model_id} failed: {exc}")
+        print("  [warn] all OpenRouter models failed; trying Gemini")
 
     if GEMINI_API_KEY:
         try:
