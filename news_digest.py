@@ -41,24 +41,16 @@ TRENDING_COUNT = 10
 COMPANIES_COUNT = 8
 
 # ---------- Endpoints / model IDs ----------
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-# Tried in order. First one that returns content wins. All must be free models
-# that support response_format=json_object. Verify against the OpenRouter API
-# at https://openrouter.ai/api/v1/models if any 404s show up in logs.
-OPENROUTER_MODELS = [
-    # Nemotron first — responds reliably on free tier. Qwen and Gemma free
-    # tiers are heavily rate-limited (429) during peak hours, so they sit
-    # behind as backups instead of burning the first call on a rate limit.
-    "nvidia/nemotron-3-super-120b-a12b:free",    # Nemotron 120B MoE, 256K ctx
-    "google/gemma-3-27b-it:free",                # Gemma 3 27B, 128K ctx
-    "qwen/qwen3-next-80b-a3b-instruct:free",     # Qwen3-Next 80B MoE, 256K ctx
+GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
+# Tried in order. First one that returns content wins. Verify available IDs at
+# https://console.groq.com/docs/models if a 404 ever shows up in logs.
+GROQ_MODELS = [
+    "llama-3.3-70b-versatile",     # Llama 3.3 70B, 128K ctx — primary
+    "llama-3.1-8b-instant",        # Llama 3.1 8B, faster fallback
 ]
 
 # ---------- Env ----------
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
-OPENROUTER_REFERER = os.getenv(
-    "OPENROUTER_REFERER", "https://github.com/ai-digest/ai-digest"
-)
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
 SITE_TITLE = os.getenv("SITE_TITLE", "AI Daily").strip() or "AI Daily"
 
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -281,21 +273,19 @@ def _clamp_float(v, lo: float, hi: float) -> float:
 
 
 # =========================================================================
-# Stage 4 — LLM wrapper (OpenRouter only, with multi-model fallback)
+# Stage 4 — LLM wrapper (Groq, with multi-model fallback)
 # =========================================================================
 def call_llm(prompt: str, json_mode: bool = True) -> str:
     global _last_llm_provider
 
-    if not OPENROUTER_API_KEY:
-        print("  [warn] OPENROUTER_API_KEY not set")
+    if not GROQ_API_KEY:
+        print("  [warn] GROQ_API_KEY not set")
         return ""
 
-    for model_id in OPENROUTER_MODELS:
+    for model_id in GROQ_MODELS:
         try:
             headers = {
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "HTTP-Referer": OPENROUTER_REFERER,
-                "X-Title": "AI Daily Digest",
+                "Authorization": f"Bearer {GROQ_API_KEY}",
                 "Content-Type": "application/json",
             }
             body: dict = {
@@ -304,18 +294,18 @@ def call_llm(prompt: str, json_mode: bool = True) -> str:
             }
             if json_mode:
                 body["response_format"] = {"type": "json_object"}
-            r = requests.post(OPENROUTER_URL, headers=headers, json=body, timeout=LLM_TIMEOUT)
+            r = requests.post(GROQ_URL, headers=headers, json=body, timeout=LLM_TIMEOUT)
             r.raise_for_status()
             data = r.json()
             content = (data.get("choices") or [{}])[0].get("message", {}).get("content", "")
             if content:
-                _last_llm_provider = f"openrouter:{model_id}"
-                print(f"  [llm] openrouter ({model_id})")
+                _last_llm_provider = f"groq:{model_id}"
+                print(f"  [llm] groq ({model_id})")
                 return content
             raise ValueError("empty content")
         except Exception as exc:
-            print(f"  [warn] openrouter {model_id} failed: {exc}")
-    print("  [warn] all OpenRouter models failed")
+            print(f"  [warn] groq {model_id} failed: {exc}")
+    print("  [warn] all Groq models failed")
     return ""
 
 

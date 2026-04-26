@@ -39,12 +39,11 @@ Nine sequential stages inside `news_digest.py`:
 3. **Score** — batches of 20 articles scored by the LLM against an impact
    rubric. Each gets `is_ai`, `india_relevance`, `impact_score`,
    `trending_score`, `category`.
-4. **LLM call** — Tries a list of free OpenRouter models in order
-   (`OPENROUTER_MODELS` constant; defaults to Qwen3-Next 80B → Nemotron 120B
-   → Gemma 3 27B). The first one to return content wins. If every model
-   fails, the pipeline degrades gracefully (zero scoring, yesterday's site
-   stays). One bad model ID won't kill a run — the loop just moves on to
-   the next.
+4. **LLM call** — Tries a list of Groq models in order (`GROQ_MODELS`
+   constant; defaults to `llama-3.3-70b-versatile` → `llama-3.1-8b-instant`).
+   The first one to return content wins. If every model fails, the pipeline
+   degrades gracefully (zero scoring, yesterday's site stays). One bad
+   model ID won't kill a run — the loop just moves on to the next.
 5. **Rank & split** — weighted `final_score`, then split into India and
    global pools (8 + 4). Either pool back-fills the other if under-supplied.
 6. **Rewrite** — one LLM call rewrites all 12 into editorial copy: crisp
@@ -66,16 +65,15 @@ Nine sequential stages inside `news_digest.py`:
 
 ## Setup (one-time, ~10 minutes)
 
-### 1. Get an OpenRouter API key
+### 1. Get a Groq API key
 
-- **OpenRouter** — https://openrouter.ai → sign in → API key. The pipeline
-  tries a list of free models (`OPENROUTER_MODELS` near the top of
+- **Groq** — https://console.groq.com → sign in → API Keys → create new.
+  The pipeline tries a list of Groq models (`GROQ_MODELS` near the top of
   `news_digest.py`); the default first choice is
-  `qwen/qwen3-next-80b-a3b-instruct:free`. To verify any slug or pick
-  alternatives, query the live API:
-  `curl https://openrouter.ai/api/v1/models | jq '.data[] | select(.pricing.prompt=="0") | .id'`
-  — only models that include `response_format` in `supported_parameters`
-  will work with our JSON-mode requirement.
+  `llama-3.3-70b-versatile`, with `llama-3.1-8b-instant` as fallback. The
+  free tier is generous enough for daily cron use without topping up. To
+  pick alternatives, see https://console.groq.com/docs/models — any model
+  that supports JSON mode will work.
 
 ### 2. Push to GitHub
 
@@ -97,7 +95,7 @@ Repo → **Settings → Secrets and variables → Actions → New repository sec
 
 | Name | Value |
 |---|---|
-| `OPENROUTER_API_KEY` | from step 1 |
+| `GROQ_API_KEY` | from step 1 |
 
 ### 4. Enable GitHub Pages
 
@@ -144,16 +142,17 @@ Fetching…
 Deduping…
   N unique
 Scoring…
-  [llm] openrouter
+  [llm] groq (llama-3.3-70b-versatile)
+  batch 1: 14/20 is_ai=true (sample is_ai=True, impact=7, keys=[…])
   ...
-  N scored (via openrouter)
+  N scored (via groq:llama-3.3-70b-versatile)
 Picking final…
   12 picked (8 india, 4 global)
 Rewriting…
-  [llm] openrouter
+  [llm] groq (llama-3.3-70b-versatile)
 Writing site…
   wrote docs/index.html (12 stories)
-  wrote docs/2026-04-26.html
+  wrote docs/2026-04-27.html
 Done.
 ```
 
@@ -205,17 +204,16 @@ User-Agents. The pipeline is fail-soft — one broken feed doesn't stop the
 others. If a source goes dark for a few days, replace the URL in
 `sources.yaml` or drop it.
 
-**OpenRouter 429.** Free-tier limits. The loop tries the next model in the
-list automatically — logs show `[warn] openrouter <model> failed: 429 …`
-then `[llm] openrouter (next-model)` on the next line. If all three hit
-429, wait a few minutes and re-run.
+**Groq 429.** Free-tier rate limits. The loop tries the next model in the
+list automatically — logs show `[warn] groq <model> failed: 429 …` then
+`[llm] groq (next-model)` on the next line. If both models hit 429, wait
+a minute and re-run; Groq's free quotas are per-model and reset quickly.
 
 **`Setting up.` page never updates.** Check **Actions → latest run**:
 - Did the build step complete? If logs say `No AI stories found`, scoring
-  returned zero `is_ai=true` — likely every OpenRouter model failed.
-  Re-run the workflow, or check that your API key is valid and the model
-  IDs in `OPENROUTER_MODELS` are still listed at
-  `https://openrouter.ai/api/v1/models`.
+  returned zero `is_ai=true` — likely every Groq model failed. Re-run the
+  workflow, or check that your API key is valid and the model IDs in
+  `GROQ_MODELS` still appear at https://console.groq.com/docs/models.
 - Did `Commit and push` say `No site changes to commit`? That happens if the
   HTML output is byte-identical to what's already in `docs/` (no
   meaningful change today). Rare in practice.
