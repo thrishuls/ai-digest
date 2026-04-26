@@ -41,3 +41,4 @@ jobs:
             git commit -m "Digest $(TZ=Asia/Kolkata date +%Y-%m-%d)"
             git push
           fi
+ 
