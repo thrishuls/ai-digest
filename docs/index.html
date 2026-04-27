@@ -1,57 +1,251 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#FF6B00">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.svg">
-<link rel="icon" type="image/svg+xml" href="icon.svg">
-<title>The AI Daily — Setting up</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,900;1,9..144,500&family=JetBrains+Mono:wght@400&family=Inter+Tight:wght@400&display=swap">
-<style>
-:root{--paper:oklch(0.962 0.018 82);--ink:oklch(0.18 0.012 60);--ink-2:oklch(0.32 0.012 60);--ink-3:oklch(0.5 0.012 60);--accent:oklch(0.66 0.21 45);--rule:oklch(0.82 0.02 70);}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#FF6B00"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.svg"><link rel="icon" type="image/svg+xml" href="icon.svg"><title>The AI Daily &mdash; Monday, April 27, 2026</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"><style>
+:root{
+  --paper:oklch(0.962 0.018 82);
+  --paper-2:oklch(0.94 0.022 82);
+  --paper-3:oklch(0.91 0.025 82);
+  --ink:oklch(0.18 0.012 60);
+  --ink-2:oklch(0.32 0.012 60);
+  --ink-3:oklch(0.5 0.012 60);
+  --ink-4:oklch(0.7 0.012 60);
+  --rule:oklch(0.82 0.02 70);
+  --accent:oklch(0.66 0.21 45);
+  --serif:"Fraunces","Newsreader",Georgia,serif;
+  --serif-display:"Fraunces","DM Serif Display",Georgia,serif;
+  --sans:"Inter Tight",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root.auto-dark{
+    --paper:oklch(0.155 0.012 60);
+    --paper-2:oklch(0.19 0.012 60);
+    --paper-3:oklch(0.23 0.014 60);
+    --ink:oklch(0.95 0.018 82);
+    --ink-2:oklch(0.85 0.018 82);
+    --ink-3:oklch(0.65 0.018 82);
+    --ink-4:oklch(0.45 0.012 60);
+    --rule:oklch(0.32 0.012 60);
+  }
+}
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
-body{background:var(--paper);color:var(--ink);font-family:"Inter Tight",ui-sans-serif,system-ui,sans-serif;background-image:radial-gradient(circle at 1px 1px,oklch(0.78 0.02 70 / 0.08) 0.7px,transparent 0.7px);background-size:3px 3px;min-height:100vh;}
-.wrap{max-width:520px;margin:0 auto;padding:18px 18px 60px;border-left:1px solid var(--rule);border-right:1px solid var(--rule);min-height:100vh;}
-@media (max-width:540px){.wrap{border:0;}}
-.masthead{padding:18px 0 14px;border-bottom:2px solid var(--ink);}
-.row{display:flex;justify-content:space-between;align-items:center;}
-.meta{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);}
-.title{margin:6px 0 8px;font-family:"Fraunces",Georgia,serif;font-weight:900;font-size:64px;line-height:0.85;letter-spacing:-0.035em;color:var(--ink);text-align:center;}
-.the{display:block;font-family:"Fraunces",Georgia,serif;font-weight:500;font-style:italic;font-size:22px;color:var(--ink-2);margin-bottom:-4px;}
-.body{padding:48px 4px;text-align:left;}
-.body h2{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:500;font-size:26px;color:var(--accent);margin:0 0 12px;}
-.body p{font-family:"Fraunces",Georgia,serif;font-size:16px;line-height:1.5;color:var(--ink-2);margin:0 0 12px;}
-.body code{background:rgba(0,0,0,0.05);padding:2px 6px;border-radius:3px;font-size:14px;font-family:"JetBrains Mono",monospace;}
-</style>
-</head><body><div class="wrap">
-<header class="masthead">
-  <div class="row">
-    <span class="meta">Vol. 01 · No. 000</span>
-    <span class="meta">est. 2026</span>
-  </div>
-  <h1 class="title">
-    <span class="the">The</span>
-    <span>AI Daily</span>
-  </h1>
-</header>
-<div class="body">
-  <h2>Setting up.</h2>
-  <p>The first edition lands here after the next scheduled run (08:00 IST), or as soon as you trigger the workflow manually from <code>Actions → Daily AI Digest → Run workflow</code>.</p>
-  <p>Bookmark this page. The PWA install prompt should appear in your browser within ~30 seconds — Chrome shows an install icon in the address bar; Safari, "Add to Home Screen" from the share sheet.</p>
-</div>
-</div>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(function (reg) { if (reg) reg.update(); })
-      .catch(function () {});
-  });
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  background-image:radial-gradient(circle at 1px 1px,oklch(0.78 0.02 70 / 0.08) 0.7px,transparent 0.7px);
+  background-size:3px 3px;
+  min-height:100vh;
 }
-</script>
-</body></html>
+.digest-root{
+  max-width:520px;
+  margin:0 auto;
+  background:var(--paper);
+  background-image:radial-gradient(circle at 1px 1px,oklch(0.78 0.02 70 / 0.08) 0.7px,transparent 0.7px);
+  background-size:3px 3px;
+  min-height:100vh;
+  border-left:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+}
+@media (max-width:540px){.digest-root{border-left:0;border-right:0;}}
+
+/* masthead */
+.masthead{padding:18px 18px 14px;border-bottom:2px solid var(--ink);}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.mast-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);}
+.mast-title{margin:6px 0 8px;font-family:var(--serif-display);font-weight:900;font-size:64px;line-height:0.85;letter-spacing:-0.035em;color:var(--ink);font-variation-settings:"opsz" 144;text-align:center;}
+.mast-the{display:block;font-family:var(--serif);font-weight:500;font-style:italic;font-size:22px;color:var(--ink-2);margin-bottom:-4px;}
+.mast-main{display:block;}
+.mast-bot{gap:10px;padding-top:4px;}
+.mast-rule{flex:1;height:1px;background:var(--ink);}
+.mast-date{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);white-space:nowrap;}
+
+/* greeting */
+.greeting{padding:22px 20px 18px;border-bottom:1px solid var(--rule);}
+.greeting .hello{margin:0 0 8px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:30px;line-height:1;color:var(--accent);letter-spacing:-0.01em;}
+.greeting .intro{margin:0;font-family:var(--serif);font-size:16px;line-height:1.4;color:var(--ink-2);text-wrap:pretty;}
+
+/* section labels */
+.section-label{display:flex;align-items:center;gap:10px;padding:0 20px;margin:22px 0 12px;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);}
+.section-label .dotline{flex:1;height:1px;background-image:linear-gradient(90deg,var(--ink-4) 50%,transparent 0);background-size:4px 1px;}
+
+/* today vs yesterday */
+.tvy{padding-bottom:18px;border-bottom:1px solid var(--rule);}
+.tvy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 20px;background:var(--rule);border:1px solid var(--rule);}
+.tvy-cell{background:var(--paper);padding:12px 10px 10px;display:flex;flex-direction:column;gap:4px;}
+.tvy-label{font-family:var(--mono);font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);}
+.tvy-today{font-family:var(--serif-display);font-weight:600;font-size:32px;line-height:1;letter-spacing:-0.025em;color:var(--ink);font-variant-numeric:tabular-nums;}
+.tvy-today.txt{font-size:18px;font-weight:600;font-style:italic;}
+.tvy-yest{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);}
+.tvy-yest .tvy-arrow{color:var(--ink-4);margin-right:2px;}
+
+/* trending ticker */
+.ticker{display:flex;align-items:stretch;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:22px;background:var(--paper-2);overflow:hidden;}
+.ticker-tag{flex-shrink:0;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;padding:10px 14px;display:flex;align-items:center;}
+.ticker-track-wrap{flex:1;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.ticker-track{display:inline-flex;gap:28px;padding:10px 14px;white-space:nowrap;animation:marquee 38s linear infinite;}
+.ticker-item{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink-2);}
+.ticker-hash{font-family:var(--mono);font-style:normal;color:var(--accent);margin-right:4px;font-weight:500;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* scope tabs */
+.scope-tabs{position:relative;margin:18px 18px 6px;display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper-2);border:1px solid var(--rule);border-radius:999px;padding:4px;height:44px;}
+.scope-thumb{position:absolute;top:4px;bottom:4px;background:var(--ink);border-radius:999px;transition:left 0.32s cubic-bezier(0.4,0.8,0.2,1),width 0.32s cubic-bezier(0.4,0.8,0.2,1);box-shadow:0 1px 4px rgba(0,0,0,0.18);}
+.scope-tab{position:relative;z-index:1;appearance:none;border:0;background:transparent;color:var(--ink-2);font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:color 0.25s ease;padding:0;}
+.scope-tab.on{color:var(--paper);}
+.scope-tab .scope-count{font-family:var(--serif);font-style:italic;font-size:13px;text-transform:none;letter-spacing:0;opacity:0.7;line-height:1;}
+.scope-tab.on .scope-count{color:var(--accent);opacity:1;font-weight:500;}
+
+/* stories label */
+.stories-label .stories-count{font-family:var(--serif-display);font-style:italic;font-size:16px;color:var(--accent);letter-spacing:0;text-transform:none;margin-left:4px;}
+
+/* story card */
+.story{position:relative;border-bottom:1px solid var(--rule);transition:background 0.3s ease;}
+.story:first-of-type{border-top:1px solid var(--rule);}
+.story.expanded{background:var(--paper-2);}
+.story.hidden{display:none;}
+.story-main{width:100%;background:transparent;border:0;padding:16px 18px;text-align:left;cursor:pointer;color:inherit;font:inherit;display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:start;-webkit-tap-highlight-color:transparent;}
+.story-num{font-family:var(--serif-display);font-weight:700;font-size:68px;line-height:0.82;letter-spacing:-0.05em;color:var(--ink);font-variant-numeric:tabular-nums;position:relative;margin-top:-2px;}
+.story.expanded .story-num{color:var(--accent);}
+.story-num::after{content:"";position:absolute;left:0;right:14px;bottom:-6px;height:1px;background:currentColor;opacity:0.3;}
+.story-body{min-width:0;}
+.story-meta{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;flex-wrap:wrap;}
+.story-time{background:var(--ink);color:var(--paper);padding:2px 5px;font-weight:500;}
+.story-dot{color:var(--ink-4);}
+.story-scope{font-weight:600;letter-spacing:0.16em;}
+.story-scope.is-international{color:var(--accent);}
+.story-scope.is-national{color:var(--ink-2);}
+.story-region{font-family:var(--serif);font-style:italic;font-size:11px;text-transform:none;letter-spacing:0;color:var(--ink-3);}
+.story-headline{margin:0 0 8px;font-family:var(--serif-display);font-weight:500;font-size:24px;line-height:1.08;letter-spacing:-0.018em;color:var(--ink);text-wrap:pretty;}
+.story-read{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;}
+.story-read:hover{border-bottom-color:var(--accent);}
+.story-read .arrow{margin-left:6px;display:inline-block;}
+.story-why{margin:0 0 8px;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.3;color:var(--accent);text-wrap:pretty;}
+.why-label{font-family:var(--mono);font-style:normal;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-right:4px;}
+.story-summary-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s cubic-bezier(0.2,0.8,0.2,1);overflow:hidden;margin-top:0;}
+.story.expanded .story-summary-wrap{grid-template-rows:1fr;margin-top:6px;}
+.story-summary-wrap > div{min-height:0;overflow:hidden;opacity:0;transition:opacity 0.35s ease 0.05s;}
+.story.expanded .story-summary-wrap > div{opacity:1;}
+.story-summary{margin:0;font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink-2);border-left:2px solid var(--accent);padding-left:12px;text-wrap:pretty;}
+.story-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 6px;border:1px solid var(--rule);color:var(--ink-3);}
+.story-expand-hint{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);display:inline-flex;align-items:center;gap:4px;}
+.hint-ar{display:inline-block;transition:transform 0.3s ease;}
+.story.expanded .hint-ar{transform:rotate(180deg);}
+
+/* save / bookmark */
+.save{position:absolute;top:14px;right:14px;width:28px;height:28px;display:grid;place-items:center;background:transparent;border:1px solid var(--rule);color:var(--ink-3);cursor:pointer;transition:color 0.2s ease,border-color 0.2s ease,background 0.2s ease;}
+.save:hover{color:var(--ink);border-color:var(--ink-3);}
+.save.on{color:var(--accent);border-color:var(--accent);background:oklch(from var(--accent) l c h / 0.08);}
+.save svg{display:block;}
+
+/* companies */
+.companies{background:var(--paper-2);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:4px 0 18px;margin:0;position:relative;}
+.companies::before{content:"INTERMISSION";position:absolute;top:-7px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 10px;font-family:var(--mono);font-size:9px;letter-spacing:0.3em;color:var(--accent);}
+.companies .section-label{margin-top:18px;}
+.comp-list{list-style:none;margin:0;padding:0 20px;}
+.comp-row{display:grid;grid-template-columns:22px 1fr 60px 30px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dotted var(--rule);}
+.comp-row:last-child{border-bottom:0;}
+.comp-rank{font-family:var(--mono);font-size:10px;color:var(--ink-4);font-weight:500;}
+.comp-name{font-family:var(--serif);font-size:14px;font-weight:500;color:var(--ink);}
+.comp-bar{height:6px;background:var(--paper-3);position:relative;}
+.comp-fill{position:absolute;inset:0 auto 0 0;background:var(--accent);}
+.comp-num{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:right;font-variant-numeric:tabular-nums;}
+
+/* hover/expand on mouse */
+@media (hover: hover){
+  .story:not(.expanded):hover{background:var(--paper-2);}
+  .story:not(.expanded):hover .story-summary-wrap{grid-template-rows:1fr;margin-top:6px;}
+  .story:not(.expanded):hover .story-summary{opacity:1;}
+}
+
+/* archive footer */
+.archive{margin:36px 20px 0;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);font-family:var(--sans);}
+.archive summary{cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);padding:4px 0;}
+.archive-list{margin-top:10px;}
+.archive-list a{display:inline-block;margin:6px 14px 0 0;color:var(--ink-2);text-decoration:none;font-family:var(--serif);font-style:italic;font-size:14px;}
+.archive-list a:hover{color:var(--accent);}
+
+/* digest footer */
+.digest-foot{padding:28px 20px 60px;text-align:center;}
+.foot-rule{width:60%;height:1px;background:var(--ink);margin:0 auto 14px;}
+.foot-text{margin:0 0 10px;font-family:var(--serif);font-size:14px;color:var(--ink-2);}
+.foot-mark{font-family:var(--serif);font-size:14px;color:var(--accent);letter-spacing:0.4em;}
+.back-link{display:inline-block;margin:0 0 16px;padding:18px 20px 0;color:var(--accent);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;}
+.back-link:hover{text-decoration:underline;}
+.empty-state{padding:48px 20px;color:var(--ink-3);font-family:var(--serif);font-style:italic;font-size:16px;text-align:center;}
+</style></head><body><div class="digest-root"><header class="masthead"><div class="mast-row mast-top"><span class="mast-meta">Vol. 01 · No. 117</span><span class="mast-meta">est. 2026</span></div><h1 class="mast-title"><span class="mast-the">The</span><span class="mast-main">AI Daily</span></h1><div class="mast-row mast-bot"><span class="mast-rule"></span><span class="mast-date">Monday, April 27, 2026</span><span class="mast-rule"></span></div></header><section class="greeting"><p class="hello">Good night.</p><p class="intro">Today&#x27;s pick: 12 stories from the last 24 hours, 8 from India, 4 from elsewhere, ordered by editorial impact.</p></section><section class="tvy"><div class="section-label"><span>Today vs. Yesterday</span><span class="dotline"></span></div><div class="tvy-grid"><div class="tvy-cell"><div class="tvy-label">Stories filed</div><div class="tvy-today">25</div><div class="tvy-yest"><span class="tvy-arrow">vs</span> &mdash;</div></div><div class="tvy-cell"><div class="tvy-label">Avg. impact</div><div class="tvy-today">7.2</div><div class="tvy-yest"><span class="tvy-arrow">vs</span> &mdash;</div></div><div class="tvy-cell"><div class="tvy-label">Top mover</div><div class="tvy-today txt">OpenAI</div><div class="tvy-yest"><span class="tvy-arrow">vs</span> &mdash;</div></div></div></section><section class="ticker"><div class="ticker-tag">Trending</div><div class="ticker-track-wrap"><div class="ticker-track"><span class="ticker-item"><span class="ticker-hash">#</span>Anthropic</span><span class="ticker-item"><span class="ticker-hash">#</span>OpenAI CEO</span><span class="ticker-item"><span class="ticker-hash">#</span>Mythos</span><span class="ticker-item"><span class="ticker-hash">#</span>China</span><span class="ticker-item"><span class="ticker-hash">#</span>Salesforce</span><span class="ticker-item"><span class="ticker-hash">#</span>Experts</span><span class="ticker-item"><span class="ticker-hash">#</span>Earth Day</span><span class="ticker-item"><span class="ticker-hash">#</span>Tumbler Ridge</span><span class="ticker-item"><span class="ticker-hash">#</span>Karnataka Drafting Responsible</span><span class="ticker-item"><span class="ticker-hash">#</span>AI Framework To</span><span class="ticker-item"><span class="ticker-hash">#</span>Anthropic</span><span class="ticker-item"><span class="ticker-hash">#</span>OpenAI CEO</span><span class="ticker-item"><span class="ticker-hash">#</span>Mythos</span><span class="ticker-item"><span class="ticker-hash">#</span>China</span><span class="ticker-item"><span class="ticker-hash">#</span>Salesforce</span><span class="ticker-item"><span class="ticker-hash">#</span>Experts</span><span class="ticker-item"><span class="ticker-hash">#</span>Earth Day</span><span class="ticker-item"><span class="ticker-hash">#</span>Tumbler Ridge</span><span class="ticker-item"><span class="ticker-hash">#</span>Karnataka Drafting Responsible</span><span class="ticker-item"><span class="ticker-hash">#</span>AI Framework To</span></div></div></section><div class="scope-tabs" role="tablist"><span class="scope-thumb" style="left:calc(((100% - 8px) / 3) * 0 + 4px);width:calc((100% - 8px) / 3);"></span><button class="scope-tab on" data-scope="all" type="button"><span class="scope-label">All</span><span class="scope-count">12</span></button><button class="scope-tab" data-scope="international" type="button"><span class="scope-label">Global</span><span class="scope-count">4</span></button><button class="scope-tab" data-scope="national" type="button"><span class="scope-label">India</span><span class="scope-count">8</span></button></div><section class="stories"><div class="section-label stories-label"><span class="stories-label-text">The Top &mdash; by recency</span><span class="dotline"></span><span class="stories-count">12</span></div><article class="story" data-idx="0" data-scope="national" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">01</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 15:21</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">Indian Express Tech</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">Google generates 75% code</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Improves development speed</p><div class="story-summary-wrap"><div><p class="story-summary">Google now generates 75% of its code using AI. This shift aims to enhance development efficiency and reduce manual labor.</p><a class="story-read" href="https://indianexpress.com/article/technology/artificial-intelligence/google-75-percent-ai-generated-code-sundar-pichai-10656702/" target="_blank" rel="noopener">Read at Indian Express Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">google</span><span class="tag">productivity</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="1" data-scope="national" data-kind="policy"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">02</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 16:37</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">ET Tech</span><span class="story-dot">&middot;</span><span class="story-kind">policy</span></div><h3 class="story-headline">Mythos poses cyber threat</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Raises security concerns</p><div class="story-summary-wrap"><div><p class="story-summary">Anthropic&#x27;s AI model Mythos poses a significant cyber threat. Authorities are engaging with Anthropic to understand and counter these risks.</p><a class="story-read" href="https://economictimes.indiatimes.com/tech/artificial-intelligence/threat-from-anthropics-mythos-as-big-as-war-nirmala-sitharaman/articleshow/130530530.cms" target="_blank" rel="noopener">Read at ET Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">security</span><span class="tag">policy</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="2" data-scope="national" data-kind="news"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">03</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 01:55</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">The Hindu Sci-Tech</span><span class="story-dot">&middot;</span><span class="story-kind">news</span></div><h3 class="story-headline">Altman apologizes</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Fails to alert police</p><div class="story-summary-wrap"><div><p class="story-summary">OpenAI&#x27;s CEO Sam Altman apologized for not alerting police to a banned account. The incident raises concerns about AI safety and accountability.</p><a class="story-read" href="https://www.thehindu.com/news/international/altman-apologises-after-openai-failed-to-alert-police-before-tumbler-ridge-killings/article70906462.ece" target="_blank" rel="noopener">Read at The Hindu Sci-Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">openai</span><span class="tag">safety</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="3" data-scope="national" data-kind="policy"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">04</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 15:08</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">ET Tech</span><span class="story-dot">&middot;</span><span class="story-kind">policy</span></div><h3 class="story-headline">Amaravati becomes quantum valley</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Attracts FDI investments</p><div class="story-summary-wrap"><div><p class="story-summary">Andhra Pradesh aims to develop Amaravati as a &#x27;quantum valley&#x27; for AI and data centers. This initiative seeks to attract significant foreign investments and create a digital ecosystem.</p><a class="story-read" href="https://economictimes.indiatimes.com/tech/information-tech/amaravati-to-be-developed-as-worlds-quantum-valley-chandrababu-naidu/articleshow/130529376.cms" target="_blank" rel="noopener">Read at ET Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">india</span><span class="tag">investment</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="4" data-scope="national" data-kind="news"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">05</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 23:26</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">ET Tech</span><span class="story-dot">&middot;</span><span class="story-kind">news</span></div><h3 class="story-headline">OpenAI apologizes</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Fails to report shooter</p><div class="story-summary-wrap"><div><p class="story-summary">OpenAI&#x27;s CEO apologized for not reporting a mass shooter&#x27;s troubling account. Canadian officials condemned OpenAI&#x27;s handling of the case and summoned company leaders to explain security protocols.</p><a class="story-read" href="https://economictimes.indiatimes.com/tech/artificial-intelligence/openai-ceo-apologises-to-canada-town-for-not-reporting-mass-shooter/articleshow/130537132.cms" target="_blank" rel="noopener">Read at ET Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">openai</span><span class="tag">canada</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><section class="companies"><div class="section-label"><span>Companies in the news</span><span class="dotline"></span></div><ol class="comp-list"><li class="comp-row"><span class="comp-rank">01</span><span class="comp-name">OpenAI</span><span class="comp-bar"><span class="comp-fill" style="width:100.0%"></span></span><span class="comp-num">4</span></li><li class="comp-row"><span class="comp-rank">02</span><span class="comp-name">Anthropic</span><span class="comp-bar"><span class="comp-fill" style="width:100.0%"></span></span><span class="comp-num">4</span></li><li class="comp-row"><span class="comp-rank">03</span><span class="comp-name">Google</span><span class="comp-bar"><span class="comp-fill" style="width:50.0%"></span></span><span class="comp-num">2</span></li><li class="comp-row"><span class="comp-rank">04</span><span class="comp-name">Apple</span><span class="comp-bar"><span class="comp-fill" style="width:50.0%"></span></span><span class="comp-num">2</span></li><li class="comp-row"><span class="comp-rank">05</span><span class="comp-name">Amazon</span><span class="comp-bar"><span class="comp-fill" style="width:25.0%"></span></span><span class="comp-num">1</span></li><li class="comp-row"><span class="comp-rank">06</span><span class="comp-name">Cohere</span><span class="comp-bar"><span class="comp-fill" style="width:25.0%"></span></span><span class="comp-num">1</span></li></ol></section><article class="story" data-idx="5" data-scope="international" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">06</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 03:13</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">TechCrunch AI</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">Anthropic creates test marketplace</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Enables agent-on-agent commerce</p><div class="story-summary-wrap"><div><p class="story-summary">Anthropic created a test marketplace for agent-on-agent commerce, allowing AI agents to strike real deals. This experiment explores new possibilities in AI-driven trade.</p><a class="story-read" href="https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/" target="_blank" rel="noopener">Read at TechCrunch AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">anthropic</span><span class="tag">research</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="6" data-scope="national" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">07</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 17:21</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">ET Tech</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">Indian IT faces AI reset</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Disrupts traditional services</p><div class="story-summary-wrap"><div><p class="story-summary">India&#x27;s top IT firms are experiencing a reset due to AI-driven productivity, causing revenue deflation in legacy services. However, new AI-native engagements are surging, prompting a shift in client priorities.</p><a class="story-read" href="https://economictimes.indiatimes.com/tech/information-tech/indian-it-faces-ai-reset-as-top-5-firms-post-mixed-fy26/articleshow/130531230.cms" target="_blank" rel="noopener">Read at ET Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">india</span><span class="tag">it</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="7" data-scope="international" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">08</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 03:21</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">Hacker News (100+ pts)</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">USB Cheat Sheet</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Provides technical reference</p><div class="story-summary-wrap"><div><p class="story-summary">A USB cheat sheet is available, offering a technical reference for developers. The resource provides valuable information on USB specifications and applications.</p><a class="story-read" href="https://fabiensanglard.net/usbcheat/index.html" target="_blank" rel="noopener">Read at Hacker News (100+ pts) <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">tech</span><span class="tag">reference</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="8" data-scope="national" data-kind="policy"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">09</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 13:11</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">Inc42</span><span class="story-dot">&middot;</span><span class="story-kind">policy</span></div><h3 class="story-headline">Karnataka drafts AI framework</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Promotes responsible governance</p><div class="story-summary-wrap"><div><p class="story-summary">Karnataka is drafting a responsible AI framework to embrace &#x27;I-Governance&#x27;. This initiative aims to promote transparent and accountable AI adoption in the public sector.</p><a class="story-read" href="https://inc42.com/features/karnataka-drafting-responsible-ai-framework-to-embrace-i-governance-priyank-kharge/" target="_blank" rel="noopener">Read at Inc42 <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">india</span><span class="tag">policy</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="9" data-scope="national" data-kind="news"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">10</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 18:03</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">ET Tech</span><span class="story-dot">&middot;</span><span class="story-kind">news</span></div><h3 class="story-headline">AI accelerates India&#x27;s tech</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Creates new opportunities</p><div class="story-summary-wrap"><div><p class="story-summary">AI is expected to accelerate India&#x27;s tech industry, rather than posing a threat. The sector will continue to hire people, with a focus on emerging technologies and innovation.</p><a class="story-read" href="https://economictimes.indiatimes.com/tech/technology/ai-to-accelerate-indias-tech-industry-not-a-threat-tech-to-continue-hiring-people-nasscom-chair/articleshow/130531908.cms" target="_blank" rel="noopener">Read at ET Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">india</span><span class="tag">tech</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="10" data-scope="international" data-kind="deal"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">11</div><div class="story-body"><div class="story-meta"><span class="story-time">Apr 25</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">TechCrunch AI</span><span class="story-dot">&middot;</span><span class="story-kind">deal</span></div><h3 class="story-headline">Cohere merges with Aleph Alpha</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Creates sovereign AI alternative</p><div class="story-summary-wrap"><div><p class="story-summary">Cohere is merging with Aleph Alpha, supported by the Schwarz Group. This move aims to offer a sovereign AI alternative to enterprises, reducing dependence on American players.</p><a class="story-read" href="https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/" target="_blank" rel="noopener">Read at TechCrunch AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">acquisition</span><span class="tag">ai</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="11" data-scope="international" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">12</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 19:28</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">Hacker News (100+ pts)</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">SWE-bench Verified discontinued</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> No longer measures coding skills</p><div class="story-summary-wrap"><div><p class="story-summary">OpenAI has discontinued SWE-bench Verified, as it no longer evaluates frontier coding capabilities. The decision reflects the evolving nature of AI-driven coding assessments.</p><a class="story-read" href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/" target="_blank" rel="noopener">Read at Hacker News (100+ pts) <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">research</span><span class="tag">coding</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article></section><footer class="digest-foot"><div class="foot-rule"></div><p class="foot-text">End of edition. <em>Tomorrow at 08:00 IST.</em></p><div class="foot-mark">&mdash; &#10022; &mdash;</div></footer></div><script>
+(function(){
+  var SAVE_KEY = 'ai-daily-saved';
+  function getSaved(){
+    try{ return new Set(JSON.parse(localStorage.getItem(SAVE_KEY)||'[]')); }
+    catch(e){ return new Set(); }
+  }
+  function setSaved(s){
+    try{ localStorage.setItem(SAVE_KEY, JSON.stringify(Array.from(s))); }catch(e){}
+  }
+  var saved = getSaved();
+  document.querySelectorAll('.story').forEach(function(el){
+    var idx = el.getAttribute('data-idx');
+    var btn = el.querySelector('.save');
+    if (!btn) return;
+    if (saved.has(idx)) btn.classList.add('on');
+    btn.addEventListener('click', function(ev){
+      ev.stopPropagation(); ev.preventDefault();
+      if (saved.has(idx)) { saved.delete(idx); btn.classList.remove('on'); }
+      else                 { saved.add(idx);    btn.classList.add('on');    }
+      setSaved(saved);
+    });
+  });
+  // expand toggle
+  document.querySelectorAll('.story-main').forEach(function(btn){
+    btn.addEventListener('click', function(ev){
+      if (ev.target.closest('a')) return;  // headline link wins
+      var article = btn.closest('.story');
+      var wasOpen = article.classList.contains('expanded');
+      document.querySelectorAll('.story.expanded').forEach(function(o){
+        if (o !== article) o.classList.remove('expanded');
+      });
+      article.classList.toggle('expanded', !wasOpen);
+    });
+  });
+  // scope tabs
+  var tabs = document.querySelectorAll('.scope-tab');
+  var thumb = document.querySelector('.scope-thumb');
+  function setActive(scope){
+    var idx = 0; tabs.forEach(function(t,i){ if (t.dataset.scope===scope) idx=i; t.classList.toggle('on', t.dataset.scope===scope); });
+    if (thumb && tabs.length){
+      thumb.style.left = 'calc(((100% - 8px) / ' + tabs.length + ') * ' + idx + ' + 4px)';
+      thumb.style.width = 'calc((100% - 8px) / ' + tabs.length + ')';
+    }
+    document.querySelectorAll('.story').forEach(function(s){
+      var sScope = s.dataset.scope || '';
+      var visible = (scope === 'all') || (sScope === scope);
+      s.classList.toggle('hidden', !visible);
+    });
+    // Companies leaderboard only shown when scope is 'all'.
+    var comp = document.querySelector('.companies');
+    if (comp) comp.classList.toggle('hidden', scope !== 'all');
+    // Update count label.
+    var countEl = document.querySelector('.stories-count');
+    if (countEl){
+      var visible = document.querySelectorAll('.story:not(.hidden)').length;
+      countEl.textContent = visible;
+    }
+    // Update label text.
+    var labelEl = document.querySelector('.stories-label-text');
+    if (labelEl){
+      labelEl.textContent = scope==='national' ? 'India — by recency'
+                          : scope==='international' ? 'Global — by recency'
+                          : 'The Top — by recency';
+    }
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ setActive(t.dataset.scope); });
+  });
+  // Initial thumb positioning.
+  var initial = document.querySelector('.scope-tab.on');
+  if (initial) setActive(initial.dataset.scope);
+})();
+</script><script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('service-worker.js').then(function(reg){if(reg)reg.update();}).catch(function(){});});}</script></body></html>
