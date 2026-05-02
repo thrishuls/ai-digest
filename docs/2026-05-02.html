@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#FF6B00"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.svg"><link rel="icon" type="image/svg+xml" href="icon.svg"><title>The AI Daily &mdash; May 02, 2026</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap"><style>
+:root{
+  --paper:oklch(0.962 0.018 82);
+  --paper-2:oklch(0.94 0.022 82);
+  --paper-3:oklch(0.91 0.025 82);
+  --ink:oklch(0.18 0.012 60);
+  --ink-2:oklch(0.32 0.012 60);
+  --ink-3:oklch(0.5 0.012 60);
+  --ink-4:oklch(0.7 0.012 60);
+  --rule:oklch(0.82 0.02 70);
+  --accent:oklch(0.66 0.21 45);
+  --serif:"Fraunces","Newsreader",Georgia,serif;
+  --serif-display:"Fraunces","DM Serif Display",Georgia,serif;
+  --sans:"Inter Tight",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root.auto-dark{
+    --paper:oklch(0.155 0.012 60);
+    --paper-2:oklch(0.19 0.012 60);
+    --paper-3:oklch(0.23 0.014 60);
+    --ink:oklch(0.95 0.018 82);
+    --ink-2:oklch(0.85 0.018 82);
+    --ink-3:oklch(0.65 0.018 82);
+    --ink-4:oklch(0.45 0.012 60);
+    --rule:oklch(0.32 0.012 60);
+  }
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  background-image:radial-gradient(circle at 1px 1px,oklch(0.78 0.02 70 / 0.08) 0.7px,transparent 0.7px);
+  background-size:3px 3px;
+  min-height:100vh;
+}
+.digest-root{
+  max-width:520px;
+  margin:0 auto;
+  background:var(--paper);
+  background-image:radial-gradient(circle at 1px 1px,oklch(0.78 0.02 70 / 0.08) 0.7px,transparent 0.7px);
+  background-size:3px 3px;
+  min-height:100vh;
+  border-left:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+}
+@media (max-width:540px){.digest-root{border-left:0;border-right:0;}}
+
+/* masthead */
+.masthead{padding:18px 18px 14px;border-bottom:2px solid var(--ink);}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.mast-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);}
+.mast-title{margin:6px 0 8px;font-family:var(--serif-display);font-weight:900;font-size:64px;line-height:0.85;letter-spacing:-0.035em;color:var(--ink);font-variation-settings:"opsz" 144;text-align:center;}
+.mast-the{display:block;font-family:var(--serif);font-weight:500;font-style:italic;font-size:22px;color:var(--ink-2);margin-bottom:-4px;}
+.mast-main{display:block;}
+.mast-bot{gap:10px;padding-top:4px;}
+.mast-rule{flex:1;height:1px;background:var(--ink);}
+.mast-date{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);white-space:nowrap;}
+
+/* greeting */
+.greeting{padding:22px 20px 18px;border-bottom:1px solid var(--rule);}
+.greeting .hello{margin:0 0 8px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:30px;line-height:1;color:var(--accent);letter-spacing:-0.01em;}
+.greeting .intro{margin:0;font-family:var(--serif);font-size:16px;line-height:1.4;color:var(--ink-2);text-wrap:pretty;}
+
+/* section labels */
+.section-label{display:flex;align-items:center;gap:10px;padding:0 20px;margin:22px 0 12px;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);}
+.section-label .dotline{flex:1;height:1px;background-image:linear-gradient(90deg,var(--ink-4) 50%,transparent 0);background-size:4px 1px;}
+
+/* today vs yesterday */
+.tvy{padding-bottom:18px;border-bottom:1px solid var(--rule);}
+.tvy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 20px;background:var(--rule);border:1px solid var(--rule);}
+.tvy-cell{background:var(--paper);padding:12px 10px 10px;display:flex;flex-direction:column;gap:4px;}
+.tvy-label{font-family:var(--mono);font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);}
+.tvy-today{font-family:var(--serif-display);font-weight:600;font-size:32px;line-height:1;letter-spacing:-0.025em;color:var(--ink);font-variant-numeric:tabular-nums;}
+.tvy-today.txt{font-size:18px;font-weight:600;font-style:italic;}
+.tvy-yest{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);}
+.tvy-yest .tvy-arrow{color:var(--ink-4);margin-right:2px;}
+
+/* trending ticker */
+.ticker{display:flex;align-items:stretch;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:22px;background:var(--paper-2);overflow:hidden;}
+.ticker-tag{flex-shrink:0;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;padding:10px 14px;display:flex;align-items:center;}
+.ticker-track-wrap{flex:1;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.ticker-track{display:inline-flex;gap:28px;padding:10px 14px;white-space:nowrap;animation:marquee 38s linear infinite;}
+.ticker-item{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink-2);}
+.ticker-hash{font-family:var(--mono);font-style:normal;color:var(--accent);margin-right:4px;font-weight:500;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* scope tabs */
+.scope-tabs{position:relative;margin:18px 18px 6px;display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper-2);border:1px solid var(--rule);border-radius:999px;padding:4px;height:44px;}
+.scope-thumb{position:absolute;top:4px;bottom:4px;background:var(--ink);border-radius:999px;transition:left 0.32s cubic-bezier(0.4,0.8,0.2,1),width 0.32s cubic-bezier(0.4,0.8,0.2,1);box-shadow:0 1px 4px rgba(0,0,0,0.18);}
+.scope-tab{position:relative;z-index:1;appearance:none;border:0;background:transparent;color:var(--ink-2);font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:color 0.25s ease;padding:0;}
+.scope-tab.on{color:var(--paper);}
+.scope-tab .scope-count{font-family:var(--serif);font-style:italic;font-size:13px;text-transform:none;letter-spacing:0;opacity:0.7;line-height:1;}
+.scope-tab.on .scope-count{color:var(--accent);opacity:1;font-weight:500;}
+
+/* stories label */
+.stories-label .stories-count{font-family:var(--serif-display);font-style:italic;font-size:16px;color:var(--accent);letter-spacing:0;text-transform:none;margin-left:4px;}
+
+/* story card */
+.story{position:relative;border-bottom:1px solid var(--rule);transition:background 0.3s ease;}
+.story:first-of-type{border-top:1px solid var(--rule);}
+.story.expanded{background:var(--paper-2);}
+.story.hidden{display:none;}
+.story-main{width:100%;background:transparent;border:0;padding:16px 18px;text-align:left;cursor:pointer;color:inherit;font:inherit;display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:start;-webkit-tap-highlight-color:transparent;}
+.story-num{font-family:var(--serif-display);font-weight:700;font-size:68px;line-height:0.82;letter-spacing:-0.05em;color:var(--ink);font-variant-numeric:tabular-nums;position:relative;margin-top:-2px;}
+.story.expanded .story-num{color:var(--accent);}
+.story-num::after{content:"";position:absolute;left:0;right:14px;bottom:-6px;height:1px;background:currentColor;opacity:0.3;}
+.story-body{min-width:0;}
+.story-meta{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;flex-wrap:wrap;}
+.story-time{background:var(--ink);color:var(--paper);padding:2px 5px;font-weight:500;}
+.story-dot{color:var(--ink-4);}
+.story-scope{font-weight:600;letter-spacing:0.16em;}
+.story-scope.is-international{color:var(--accent);}
+.story-scope.is-national{color:var(--ink-2);}
+.story-region{font-family:var(--serif);font-style:italic;font-size:11px;text-transform:none;letter-spacing:0;color:var(--ink-3);}
+.story-headline{margin:0 0 8px;font-family:var(--serif-display);font-weight:500;font-size:24px;line-height:1.08;letter-spacing:-0.018em;color:var(--ink);text-wrap:pretty;}
+.story-read{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;}
+.story-read:hover{border-bottom-color:var(--accent);}
+.story-read .arrow{margin-left:6px;display:inline-block;}
+.story-why{margin:0 0 8px;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.3;color:var(--accent);text-wrap:pretty;}
+.why-label{font-family:var(--mono);font-style:normal;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-right:4px;}
+.story-summary-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s cubic-bezier(0.2,0.8,0.2,1);overflow:hidden;margin-top:0;}
+.story.expanded .story-summary-wrap{grid-template-rows:1fr;margin-top:6px;}
+.story-summary-wrap > div{min-height:0;overflow:hidden;opacity:0;transition:opacity 0.35s ease 0.05s;}
+.story.expanded .story-summary-wrap > div{opacity:1;}
+.story-summary{margin:0;font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink-2);border-left:2px solid var(--accent);padding-left:12px;text-wrap:pretty;}
+.story-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 6px;border:1px solid var(--rule);color:var(--ink-3);}
+.story-expand-hint{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);display:inline-flex;align-items:center;gap:4px;}
+.hint-ar{display:inline-block;transition:transform 0.3s ease;}
+.story.expanded .hint-ar{transform:rotate(180deg);}
+
+/* save / bookmark */
+.save{position:absolute;top:14px;right:14px;width:28px;height:28px;display:grid;place-items:center;background:transparent;border:1px solid var(--rule);color:var(--ink-3);cursor:pointer;transition:color 0.2s ease,border-color 0.2s ease,background 0.2s ease;}
+.save:hover{color:var(--ink);border-color:var(--ink-3);}
+.save.on{color:var(--accent);border-color:var(--accent);background:oklch(from var(--accent) l c h / 0.08);}
+.save svg{display:block;}
+
+/* companies */
+.companies{background:var(--paper-2);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:4px 0 18px;margin:0;position:relative;}
+.companies::before{content:"INTERMISSION";position:absolute;top:-7px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 10px;font-family:var(--mono);font-size:9px;letter-spacing:0.3em;color:var(--accent);}
+.companies .section-label{margin-top:18px;}
+.comp-list{list-style:none;margin:0;padding:0 20px;}
+.comp-row{display:grid;grid-template-columns:22px 1fr 60px 30px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dotted var(--rule);}
+.comp-row:last-child{border-bottom:0;}
+.comp-rank{font-family:var(--mono);font-size:10px;color:var(--ink-4);font-weight:500;}
+.comp-name{font-family:var(--serif);font-size:14px;font-weight:500;color:var(--ink);}
+.comp-bar{height:6px;background:var(--paper-3);position:relative;}
+.comp-fill{position:absolute;inset:0 auto 0 0;background:var(--accent);}
+.comp-num{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:right;font-variant-numeric:tabular-nums;}
+
+/* hover/expand on mouse */
+@media (hover: hover){
+  .story:not(.expanded):hover{background:var(--paper-2);}
+  .story:not(.expanded):hover .story-summary-wrap{grid-template-rows:1fr;margin-top:6px;}
+  .story:not(.expanded):hover .story-summary{opacity:1;}
+}
+
+/* archive footer */
+.archive{margin:36px 20px 0;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);font-family:var(--sans);}
+.archive summary{cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);padding:4px 0;}
+.archive-list{margin-top:10px;}
+.archive-list a{display:inline-block;margin:6px 14px 0 0;color:var(--ink-2);text-decoration:none;font-family:var(--serif);font-style:italic;font-size:14px;}
+.archive-list a:hover{color:var(--accent);}
+
+/* digest footer */
+.digest-foot{padding:28px 20px 60px;text-align:center;}
+.foot-rule{width:60%;height:1px;background:var(--ink);margin:0 auto 14px;}
+.foot-text{margin:0 0 10px;font-family:var(--serif);font-size:14px;color:var(--ink-2);}
+.foot-mark{font-family:var(--serif);font-size:14px;color:var(--accent);letter-spacing:0.4em;}
+.back-link{display:inline-block;margin:0 0 16px;padding:18px 20px 0;color:var(--accent);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;}
+.back-link:hover{text-decoration:underline;}
+.empty-state{padding:48px 20px;color:var(--ink-3);font-family:var(--serif);font-style:italic;font-size:16px;text-align:center;}
+
+/* ===== Background palettes (data-bg) ===== */
+.digest-root[data-bg="cream"]{--paper:oklch(0.962 0.018 82);--paper-2:oklch(0.94 0.022 82);--paper-3:oklch(0.91 0.025 82);--ink:oklch(0.18 0.012 60);--ink-2:oklch(0.32 0.012 60);--ink-3:oklch(0.5 0.012 60);--ink-4:oklch(0.7 0.012 60);--rule:oklch(0.82 0.02 70);}
+.digest-root[data-bg="offwhite"]{--paper:oklch(0.985 0.003 100);--paper-2:oklch(0.96 0.003 100);--paper-3:oklch(0.92 0.004 100);--ink:oklch(0.16 0.005 240);--ink-2:oklch(0.32 0.005 240);--ink-3:oklch(0.52 0.005 240);--ink-4:oklch(0.72 0.005 240);--rule:oklch(0.85 0.005 240);}
+.digest-root[data-bg="stone"]{--paper:oklch(0.9 0.008 70);--paper-2:oklch(0.86 0.01 70);--paper-3:oklch(0.82 0.012 70);--ink:oklch(0.2 0.01 60);--ink-2:oklch(0.34 0.01 60);--ink-3:oklch(0.5 0.01 60);--ink-4:oklch(0.68 0.01 60);--rule:oklch(0.74 0.012 70);}
+.digest-root[data-bg="sage"]{--paper:oklch(0.945 0.018 145);--paper-2:oklch(0.92 0.022 145);--paper-3:oklch(0.88 0.025 145);--ink:oklch(0.2 0.018 160);--ink-2:oklch(0.34 0.018 160);--ink-3:oklch(0.5 0.018 160);--ink-4:oklch(0.68 0.018 160);--rule:oklch(0.78 0.02 150);}
+.digest-root[data-bg="midnight"]{--paper:oklch(0.155 0.012 60);--paper-2:oklch(0.19 0.012 60);--paper-3:oklch(0.23 0.014 60);--ink:oklch(0.95 0.018 82);--ink-2:oklch(0.85 0.018 82);--ink-3:oklch(0.65 0.018 82);--ink-4:oklch(0.45 0.012 60);--rule:oklch(0.32 0.012 60);}
+.digest-root.dark{--paper:oklch(0.155 0.012 60);--paper-2:oklch(0.19 0.012 60);--paper-3:oklch(0.23 0.014 60);--ink:oklch(0.95 0.018 82);--ink-2:oklch(0.85 0.018 82);--ink-3:oklch(0.65 0.018 82);--ink-4:oklch(0.45 0.012 60);--rule:oklch(0.32 0.012 60);}
+
+/* ===== Display fonts (data-fonts) ===== */
+.digest-root[data-fonts="fraunces"]{--serif:"Fraunces","Newsreader",Georgia,serif;--serif-display:"Fraunces","DM Serif Display",Georgia,serif;}
+.digest-root[data-fonts="playfair"]{--serif:"Playfair Display",Georgia,serif;--serif-display:"Playfair Display",Georgia,serif;}
+.digest-root[data-fonts="newsreader"]{--serif:"Newsreader",Georgia,serif;--serif-display:"DM Serif Display",Georgia,serif;}
+.digest-root[data-fonts="garamond"]{--serif:"EB Garamond",Georgia,serif;--serif-display:"EB Garamond",Georgia,serif;}
+.digest-root[data-fonts="instrument"]{--serif:"Instrument Serif",Georgia,serif;--serif-display:"Instrument Serif",Georgia,serif;}
+
+/* ===== Density (data-density) ===== */
+.digest-root[data-density="compact"] .story-main{padding:12px 16px;}
+.digest-root[data-density="compact"] .story-headline{font-size:22px;line-height:1.08;}
+.digest-root[data-density="compact"] .story-num{font-size:56px;}
+.digest-root[data-density="compact"] .story-summary-wrap{margin-top:4px;}
+.digest-root[data-density="comfy"] .story-main{padding:22px 18px;}
+.digest-root[data-density="comfy"] .story-headline{font-size:28px;line-height:1.04;}
+.digest-root[data-density="comfy"] .story-num{font-size:84px;}
+
+/* ===== Settings drawer ===== */
+.settings-toggle{position:fixed;top:14px;right:14px;z-index:50;width:40px;height:40px;border-radius:50%;background:var(--paper);border:1px solid var(--rule);cursor:pointer;display:grid;place-items:center;color:var(--ink-2);box-shadow:0 2px 10px rgba(0,0,0,0.10);transition:transform 0.25s ease,color 0.2s ease,border-color 0.2s ease;font-family:var(--serif-display);font-weight:600;font-size:18px;line-height:1;}
+.settings-toggle:hover{color:var(--ink);border-color:var(--ink-3);transform:rotate(-8deg);}
+.settings-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.42);z-index:60;opacity:0;pointer-events:none;transition:opacity 0.25s ease;}
+.settings-backdrop.open{opacity:1;pointer-events:auto;}
+.settings-drawer{position:fixed;top:0;right:0;bottom:0;z-index:70;width:340px;max-width:92vw;background:var(--paper);color:var(--ink);border-left:1px solid var(--rule);transform:translateX(105%);transition:transform 0.32s cubic-bezier(0.2,0.8,0.2,1);overflow-y:auto;padding:22px 22px 36px;-webkit-overflow-scrolling:touch;}
+.settings-drawer.open{transform:translateX(0);box-shadow:-6px 0 26px rgba(0,0,0,0.14);}
+.settings-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:20px;}
+.settings-title{font-family:var(--serif-display);font-weight:700;font-size:24px;letter-spacing:-0.012em;color:var(--ink);}
+.settings-close{background:transparent;border:1px solid var(--rule);width:30px;height:30px;border-radius:50%;cursor:pointer;color:var(--ink-3);display:grid;place-items:center;font-size:18px;line-height:1;padding:0;transition:color 0.2s ease,border-color 0.2s ease;}
+.settings-close:hover{color:var(--ink);border-color:var(--ink-3);}
+.settings-section{margin-bottom:22px;}
+.settings-label{font-family:var(--mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;display:block;}
+.settings-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
+.bg-sw,.font-sw{appearance:none;border:1px solid var(--rule);border-radius:6px;height:54px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:4px 1px;transition:transform 0.15s ease,border-color 0.15s ease,box-shadow 0.15s ease;font:inherit;overflow:hidden;min-width:0;}
+.bg-sw:hover,.font-sw:hover{transform:translateY(-1px);}
+.bg-sw.on,.font-sw.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--accent);}
+.bg-sw-glyph{font-family:var(--serif-display);font-weight:600;font-size:16px;line-height:1;}
+.font-sw{background:var(--paper-2);color:var(--ink);}
+.font-sw-glyph{font-size:22px;line-height:1;color:var(--ink);}
+.bg-sw-label,.font-sw-label{font-family:var(--mono);font-size:7.5px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.7;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.settings-density{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--paper-2);padding:4px;border-radius:6px;border:1px solid var(--rule);}
+.density-btn{appearance:none;border:0;background:transparent;cursor:pointer;padding:9px 4px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);border-radius:4px;transition:background 0.2s ease,color 0.2s ease;}
+.density-btn:hover{color:var(--ink);}
+.density-btn.on{background:var(--ink);color:var(--paper);}
+.settings-row{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.toggle-switch{position:relative;width:44px;height:24px;background:var(--paper-3);border:1px solid var(--rule);border-radius:999px;cursor:pointer;transition:background 0.2s ease,border-color 0.2s ease;flex-shrink:0;padding:0;}
+.toggle-switch::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;background:var(--paper);border:1px solid var(--rule);border-radius:50%;transition:left 0.22s cubic-bezier(0.4,0.8,0.2,1);}
+.toggle-switch.on{background:var(--accent);border-color:var(--accent);}
+.toggle-switch.on::after{left:22px;border-color:var(--accent);}
+.accent-picker{width:100%;height:38px;border-radius:6px;border:1px solid var(--rule);cursor:pointer;background:transparent;padding:2px;}
+.settings-reset{width:100%;margin-top:8px;padding:10px;background:transparent;border:1px solid var(--rule);border-radius:6px;cursor:pointer;font-family:var(--mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);transition:color 0.2s ease,border-color 0.2s ease;}
+.settings-reset:hover{color:var(--accent);border-color:var(--accent);}
+</style></head><body><div class="digest-root" data-bg="cream" data-fonts="fraunces" data-density="regular"><script>(function(){try{var s=JSON.parse(localStorage.getItem('ai-daily-settings')||'{}');var r=document.querySelector('.digest-root');if(!r)return;if(s.bg)r.setAttribute('data-bg',s.bg);if(s.font)r.setAttribute('data-fonts',s.font);if(s.density)r.setAttribute('data-density',s.density);if(s.dark)r.classList.add('dark');if(s.accent)r.style.setProperty('--accent',s.accent);}catch(e){}})();</script><header class="masthead"><div class="mast-row mast-top"><span class="mast-meta">Vol. 01 · No. 122</span><span class="mast-meta">est. 2026</span></div><h1 class="mast-title"><span class="mast-the">The</span><span class="mast-main">AI Daily</span></h1><div class="mast-row mast-bot"><span class="mast-rule"></span><span class="mast-date">May 02, 2026</span><span class="mast-rule"></span></div></header><section class="greeting"><p class="hello">Good morning.</p><p class="intro">Today&#x27;s pick: 12 stories from the last 24 hours, 8 from India, 4 from elsewhere, ordered by editorial impact.</p></section><section class="tvy"><div class="section-label"><span>Today vs. Yesterday</span><span class="dotline"></span></div><div class="tvy-grid"><div class="tvy-cell"><div class="tvy-label">Stories filed</div><div class="tvy-today">26</div><div class="tvy-yest"><span class="tvy-arrow">vs</span> 34</div></div><div class="tvy-cell"><div class="tvy-label">Avg. impact</div><div class="tvy-today">6.7</div><div class="tvy-yest"><span class="tvy-arrow">vs</span> 7.8</div></div><div class="tvy-cell"><div class="tvy-label">Top mover</div><div class="tvy-today txt">OpenAI</div><div class="tvy-yest"><span class="tvy-arrow">vs</span> OpenAI</div></div></div></section><section class="ticker"><div class="ticker-tag">Trending</div><div class="ticker-track-wrap"><div class="ticker-track"><span class="ticker-item"><span class="ticker-hash">#</span>Apple</span><span class="ticker-item"><span class="ticker-hash">#</span>OpenAI</span><span class="ticker-item"><span class="ticker-hash">#</span>Tim Cook</span><span class="ticker-item"><span class="ticker-hash">#</span>Elon Musk</span><span class="ticker-item"><span class="ticker-hash">#</span>Meta</span><span class="ticker-item"><span class="ticker-hash">#</span>April</span><span class="ticker-item"><span class="ticker-hash">#</span>Pentagon</span><span class="ticker-item"><span class="ticker-hash">#</span>Musk</span><span class="ticker-item"><span class="ticker-hash">#</span>Altman</span><span class="ticker-item"><span class="ticker-hash">#</span>Share</span><span class="ticker-item"><span class="ticker-hash">#</span>Apple</span><span class="ticker-item"><span class="ticker-hash">#</span>OpenAI</span><span class="ticker-item"><span class="ticker-hash">#</span>Tim Cook</span><span class="ticker-item"><span class="ticker-hash">#</span>Elon Musk</span><span class="ticker-item"><span class="ticker-hash">#</span>Meta</span><span class="ticker-item"><span class="ticker-hash">#</span>April</span><span class="ticker-item"><span class="ticker-hash">#</span>Pentagon</span><span class="ticker-item"><span class="ticker-hash">#</span>Musk</span><span class="ticker-item"><span class="ticker-hash">#</span>Altman</span><span class="ticker-item"><span class="ticker-hash">#</span>Share</span></div></div></section><div class="scope-tabs" role="tablist"><span class="scope-thumb" style="left:calc(((100% - 8px) / 3) * 0 + 4px);width:calc((100% - 8px) / 3);"></span><button class="scope-tab on" data-scope="all" type="button"><span class="scope-label">All</span><span class="scope-count">12</span></button><button class="scope-tab" data-scope="international" type="button"><span class="scope-label">Global</span><span class="scope-count">4</span></button><button class="scope-tab" data-scope="national" type="button"><span class="scope-label">India</span><span class="scope-count">8</span></button></div><section class="stories"><div class="section-label stories-label"><span class="stories-label-text">The Top &mdash; by recency</span><span class="dotline"></span><span class="stories-count">12</span></div><article class="story" data-idx="0" data-scope="national" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">01</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 15:01</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">MediaNama</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">Meta expands AI training with richer user data in Q1 FY26 earnings call</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Meta boosts AI training with user data expansion</p><div class="story-summary-wrap"><div><p class="story-summary">Meta expanded AI training with richer user data, boosting Reels engagement and video time. LLM-driven recommendations and AI agents power ads, content discovery, and future monetization.</p><a class="story-read" href="https://www.medianama.com/2026/05/223-llm-based-recommenders-ads-ai-agents-metas-growth-strategy-q1-fy26-earnings-call/" target="_blank" rel="noopener">Read at MediaNama <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">research</span><span class="tag">meta</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="1" data-scope="national" data-kind="news"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">02</div><div class="story-body"><div class="story-meta"><span class="story-time">09:36</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">The Hindu Sci-Tech</span><span class="story-dot">&middot;</span><span class="story-kind">news</span></div><h3 class="story-headline">Elon Musk grilled on AI profits at OpenAI trial</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Musk faces scrutiny over OpenAI profits</p><div class="story-summary-wrap"><div><p class="story-summary">U.S. federal Judge Yvonne Gonzalez Rogers intervened to ensure Musk&#x27;s questions were answered during the OpenAI trial.</p><a class="story-read" href="https://www.thehindu.com/sci-tech/technology/elon-musk-grilled-on-ai-profits-at-openai-trial/article70930725.ece" target="_blank" rel="noopener">Read at The Hindu Sci-Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">other</span><span class="tag">trial</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="2" data-scope="international" data-kind="deal"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">03</div><div class="story-body"><div class="story-meta"><span class="story-time">03:43</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">TechCrunch AI</span><span class="story-dot">&middot;</span><span class="story-kind">deal</span></div><h3 class="story-headline">Meta acquires robotics startup Assured Robot Intelligence</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Meta buys robotics startup to bolster humanoid AI ambitions</p><div class="story-summary-wrap"><div><p class="story-summary">Meta acquired robotics startup Assured Robot Intelligence to enhance its AI models for robots.</p><a class="story-read" href="https://techcrunch.com/2026/05/01/meta-buys-robotics-startup-to-bolster-its-humanoid-ai-ambitions/" target="_blank" rel="noopener">Read at TechCrunch AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">acquisition</span><span class="tag">robotics</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="3" data-scope="international" data-kind="funding"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">04</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 21:32</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">TechCrunch AI</span><span class="story-dot">&middot;</span><span class="story-kind">funding</span></div><h3 class="story-headline">Pentagon inks deals with Nvidia, Microsoft, and AWS for AI on classified networks</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> DOD diversifies exposure to AI vendors after Anthropic dispute</p><div class="story-summary-wrap"><div><p class="story-summary">The Pentagon struck deals with Nvidia, Microsoft, Amazon, xAI, and others to deploy AI on classified networks.</p><a class="story-read" href="https://techcrunch.com/2026/05/01/pentagon-inks-deals-with-nvidia-microsoft-and-aws-to-deploy-ai-on-classified-networks/" target="_blank" rel="noopener">Read at TechCrunch AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">funding</span><span class="tag">governance</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="4" data-scope="international" data-kind="funding"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">05</div><div class="story-body"><div class="story-meta"><span class="story-time">00:44</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">The Verge AI</span><span class="story-dot">&middot;</span><span class="story-kind">funding</span></div><h3 class="story-headline">Evidence revealed in Musk v. Altman trial</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Evidence emerges in high-profile AI trial</p><div class="story-summary-wrap"><div><p class="story-summary">Email exchanges, photos, and corporate documents are being revealed in the Musk v. Altman trial.</p><a class="story-read" href="https://www.theverge.com/ai-artificial-intelligence/920775/evidence-exhibits-elon-musk-sam-altman-openai-trial" target="_blank" rel="noopener">Read at The Verge AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">funding</span><span class="tag">court</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><section class="companies"><div class="section-label"><span>Companies in the news</span><span class="dotline"></span></div><ol class="comp-list"><li class="comp-row"><span class="comp-rank">01</span><span class="comp-name">OpenAI</span><span class="comp-bar"><span class="comp-fill" style="width:100.0%"></span></span><span class="comp-num">11</span></li><li class="comp-row"><span class="comp-rank">02</span><span class="comp-name">Apple</span><span class="comp-bar"><span class="comp-fill" style="width:81.8%"></span></span><span class="comp-num">9</span></li><li class="comp-row"><span class="comp-rank">03</span><span class="comp-name">Meta</span><span class="comp-bar"><span class="comp-fill" style="width:45.5%"></span></span><span class="comp-num">5</span></li><li class="comp-row"><span class="comp-rank">04</span><span class="comp-name">Microsoft</span><span class="comp-bar"><span class="comp-fill" style="width:36.4%"></span></span><span class="comp-num">4</span></li><li class="comp-row"><span class="comp-rank">05</span><span class="comp-name">Amazon</span><span class="comp-bar"><span class="comp-fill" style="width:27.3%"></span></span><span class="comp-num">3</span></li><li class="comp-row"><span class="comp-rank">06</span><span class="comp-name">Anthropic</span><span class="comp-bar"><span class="comp-fill" style="width:27.3%"></span></span><span class="comp-num">3</span></li><li class="comp-row"><span class="comp-rank">07</span><span class="comp-name">xAI</span><span class="comp-bar"><span class="comp-fill" style="width:27.3%"></span></span><span class="comp-num">3</span></li><li class="comp-row"><span class="comp-rank">08</span><span class="comp-name">Google</span><span class="comp-bar"><span class="comp-fill" style="width:18.2%"></span></span><span class="comp-num">2</span></li></ol></section><article class="story" data-idx="5" data-scope="international" data-kind="funding"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">06</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 19:39</span><span class="story-dot">&middot;</span><span class="story-scope is-international">Intl</span><span class="story-dot">&middot;</span><span class="story-region">The Verge AI</span><span class="story-dot">&middot;</span><span class="story-kind">funding</span></div><h3 class="story-headline">Pentagon strikes classified AI deals with OpenAI, Google, and Nvidia</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Pentagon partners with AI vendors for classified use</p><div class="story-summary-wrap"><div><p class="story-summary">The Pentagon has struck deals with OpenAI, Google, Microsoft, and others to use AI tools in classified settings.</p><a class="story-read" href="https://www.theverge.com/ai-artificial-intelligence/922113/pentagon-ai-classified-openai-google-nvidia" target="_blank" rel="noopener">Read at The Verge AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">funding</span><span class="tag">governance</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="6" data-scope="national" data-kind="deal"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">07</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 12:26</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">Inc42</span><span class="story-dot">&middot;</span><span class="story-kind">deal</span></div><h3 class="story-headline">Palo Alto Networks acquires Portkey to boost AI security play</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Palo Alto Networks expands AI security capabilities</p><div class="story-summary-wrap"><div><p class="story-summary">Cryptography firm Palo Alto Networks has acquired AI infrastructure startup Portkey.</p><a class="story-read" href="https://inc42.com/buzz/palo-alto-networks-to-acquire-portkey-to-boost-ai-security-play/" target="_blank" rel="noopener">Read at Inc42 <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">acquisition</span><span class="tag">cybersecurity</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="7" data-scope="national" data-kind="product"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">08</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 17:05</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">MediaNama</span><span class="story-dot">&middot;</span><span class="story-kind">product</span></div><h3 class="story-headline">OpenAI introduces Advanced Account Security for ChatGPT</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> OpenAI strengthens chatbot security</p><div class="story-summary-wrap"><div><p class="story-summary">OpenAI has introduced Advanced Account Security for ChatGPT users, replacing passwords and SMS recovery with stronger authentication methods.</p><a class="story-read" href="https://www.medianama.com/2026/05/223-openai-advanced-passwordles-security-chatgpt-accounts/" target="_blank" rel="noopener">Read at MediaNama <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">product</span><span class="tag">security</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="8" data-scope="national" data-kind="product"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">09</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 07:30</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">TechCrunch AI</span><span class="story-dot">&middot;</span><span class="story-kind">product</span></div><h3 class="story-headline">ChatGPT Images 2.0 gains popularity in India</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> ChatGPT Images 2.0 gains popularity among Indian users</p><div class="story-summary-wrap"><div><p class="story-summary">Users in India are embracing ChatGPT Images 2.0 for creative and personal visuals, from avatars to cinematic portraits.</p><a class="story-read" href="https://techcrunch.com/2026/04/30/chatgpt-images-2-0-is-a-hit-in-india-but-not-a-big-winner-elsewhere-yet/" target="_blank" rel="noopener">Read at TechCrunch AI <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">product</span><span class="tag">marketing</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="9" data-scope="national" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">10</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 15:34</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">The Hindu Sci-Tech</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">AI in healthcare: augmenting human decision-making</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> AI holds promise in healthcare despite overhype</p><div class="story-summary-wrap"><div><p class="story-summary">AI in healthcare can help improve delivery and efficiency, but it won&#x27;t revolutionize it, according to experts.</p><a class="story-read" href="https://www.thehindu.com/sci-tech/health/artificial-intelligence-in-healthcare-what-lies-ahead/article69257706.ece" target="_blank" rel="noopener">Read at The Hindu Sci-Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">research</span><span class="tag">healthcare</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="10" data-scope="national" data-kind="research"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">11</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 14:30</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">Indian Express Tech</span><span class="story-dot">&middot;</span><span class="story-kind">research</span></div><h3 class="story-headline">India faces cybersecurity talent crunch due to AI demand</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> India sees surge in AI-driven cybersecurity demand</p><div class="story-summary-wrap"><div><p class="story-summary">A report highlights that AI and cloud adoption have driven demand for cybersecurity talent, leading to a shortage in India.</p><a class="story-read" href="https://indianexpress.com/article/technology/artificial-intelligence/india-cybersecurity-skills-gap-ai-demand-report-10665764/" target="_blank" rel="noopener">Read at Indian Express Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">research</span><span class="tag">cybersecurity</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article><article class="story" data-idx="11" data-scope="national" data-kind="product"><button type="button" class="story-main" aria-expanded="false"><div class="story-num" aria-hidden="true">12</div><div class="story-body"><div class="story-meta"><span class="story-time">Yesterday 13:15</span><span class="story-dot">&middot;</span><span class="story-scope is-national">Natl</span><span class="story-dot">&middot;</span><span class="story-region">Indian Express Tech</span><span class="story-dot">&middot;</span><span class="story-kind">product</span></div><h3 class="story-headline">Google Gemini adds file generation feature</h3><p class="story-why"><span class="why-label">Why it matters &mdash;</span> Google Gemini expands document generation capabilities</p><div class="story-summary-wrap"><div><p class="story-summary"></p><a class="story-read" href="https://indianexpress.com/article/technology/tech-news-technology/google-gemini-adds-file-generation-feature-for-documents-and-spreadsheets-10665606/" target="_blank" rel="noopener">Read at Indian Express Tech <span class="arrow">&rarr;</span></a></div></div><div class="story-tags"><span class="tag">product</span><span class="tag">google</span><span class="story-expand-hint">More <span class="hint-ar">&darr;</span></span></div></div></button><button type="button" class="save" aria-label="Bookmark"><svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M1.5 1.5h11v15l-5.5-4-5.5 4z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"></path></svg></button></article></section><a class="back-link" href="./">&larr; Latest edition</a><footer class="digest-foot"><div class="foot-rule"></div><p class="foot-text">End of edition. <em>Tomorrow at 08:00 IST.</em></p><div class="foot-mark">&mdash; &#10022; &mdash;</div></footer></div><script>
+(function(){
+  var SAVE_KEY = 'ai-daily-saved';
+  function getSaved(){
+    try{ return new Set(JSON.parse(localStorage.getItem(SAVE_KEY)||'[]')); }
+    catch(e){ return new Set(); }
+  }
+  function setSaved(s){
+    try{ localStorage.setItem(SAVE_KEY, JSON.stringify(Array.from(s))); }catch(e){}
+  }
+  var saved = getSaved();
+  document.querySelectorAll('.story').forEach(function(el){
+    var idx = el.getAttribute('data-idx');
+    var btn = el.querySelector('.save');
+    if (!btn) return;
+    if (saved.has(idx)) btn.classList.add('on');
+    btn.addEventListener('click', function(ev){
+      ev.stopPropagation(); ev.preventDefault();
+      if (saved.has(idx)) { saved.delete(idx); btn.classList.remove('on'); }
+      else                 { saved.add(idx);    btn.classList.add('on');    }
+      setSaved(saved);
+    });
+  });
+  // expand toggle
+  document.querySelectorAll('.story-main').forEach(function(btn){
+    btn.addEventListener('click', function(ev){
+      if (ev.target.closest('a')) return;  // headline link wins
+      var article = btn.closest('.story');
+      var wasOpen = article.classList.contains('expanded');
+      document.querySelectorAll('.story.expanded').forEach(function(o){
+        if (o !== article) o.classList.remove('expanded');
+      });
+      article.classList.toggle('expanded', !wasOpen);
+    });
+  });
+  // scope tabs
+  var tabs = document.querySelectorAll('.scope-tab');
+  var thumb = document.querySelector('.scope-thumb');
+  function setActive(scope){
+    var idx = 0; tabs.forEach(function(t,i){ if (t.dataset.scope===scope) idx=i; t.classList.toggle('on', t.dataset.scope===scope); });
+    if (thumb && tabs.length){
+      thumb.style.left = 'calc(((100% - 8px) / ' + tabs.length + ') * ' + idx + ' + 4px)';
+      thumb.style.width = 'calc((100% - 8px) / ' + tabs.length + ')';
+    }
+    document.querySelectorAll('.story').forEach(function(s){
+      var sScope = s.dataset.scope || '';
+      var visible = (scope === 'all') || (sScope === scope);
+      s.classList.toggle('hidden', !visible);
+    });
+    // Companies leaderboard only shown when scope is 'all'.
+    var comp = document.querySelector('.companies');
+    if (comp) comp.classList.toggle('hidden', scope !== 'all');
+    // Update count label.
+    var countEl = document.querySelector('.stories-count');
+    if (countEl){
+      var visible = document.querySelectorAll('.story:not(.hidden)').length;
+      countEl.textContent = visible;
+    }
+    // Update label text.
+    var labelEl = document.querySelector('.stories-label-text');
+    if (labelEl){
+      labelEl.textContent = scope==='national' ? 'India — by recency'
+                          : scope==='international' ? 'Global — by recency'
+                          : 'The Top — by recency';
+    }
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ setActive(t.dataset.scope); });
+  });
+  // Initial thumb positioning.
+  var initial = document.querySelector('.scope-tab.on');
+  if (initial) setActive(initial.dataset.scope);
+})();
+</script><script>
+(function(){
+  var KEY='ai-daily-settings';
+  var DEFAULTS={bg:'cream',font:'fraunces',density:'regular',dark:false,accent:''};
+  function load(){try{return Object.assign({},DEFAULTS,JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){return Object.assign({},DEFAULTS);}}
+  function save(s){try{localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+  function apply(s){
+    var r=document.querySelector('.digest-root');
+    if(!r) return;
+    r.setAttribute('data-bg',s.bg||'cream');
+    r.setAttribute('data-fonts',s.font||'fraunces');
+    r.setAttribute('data-density',s.density||'regular');
+    r.classList.toggle('dark',!!s.dark);
+    if(s.accent) r.style.setProperty('--accent',s.accent);
+    else r.style.removeProperty('--accent');
+  }
+  var s=load();
+  apply(s);
+
+  var toggle=document.querySelector('.settings-toggle');
+  var drawer=document.querySelector('.settings-drawer');
+  var backdrop=document.querySelector('.settings-backdrop');
+  if(!toggle||!drawer||!backdrop) return;  // not rendered (e.g. archive page)
+
+  function open(){drawer.classList.add('open');backdrop.classList.add('open');drawer.setAttribute('aria-hidden','false');}
+  function close(){drawer.classList.remove('open');backdrop.classList.remove('open');drawer.setAttribute('aria-hidden','true');}
+  toggle.addEventListener('click',open);
+  backdrop.addEventListener('click',close);
+  var closeBtn=document.querySelector('.settings-close');
+  if(closeBtn) closeBtn.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  function syncSwatches(group,key){
+    document.querySelectorAll('.'+group).forEach(function(b){
+      b.classList.toggle('on',b.dataset[key]===s[key]);
+      b.addEventListener('click',function(){
+        s[key]=b.dataset[key];
+        document.querySelectorAll('.'+group).forEach(function(o){o.classList.toggle('on',o===b);});
+        save(s);apply(s);
+      });
+    });
+  }
+  syncSwatches('bg-sw','bg');
+  syncSwatches('font-sw','font');
+  syncSwatches('density-btn','density');
+
+  var darkSw=document.querySelector('.dark-toggle');
+  if(darkSw){
+    darkSw.classList.toggle('on',!!s.dark);
+    darkSw.addEventListener('click',function(){
+      s.dark=!s.dark;
+      darkSw.classList.toggle('on',s.dark);
+      save(s);apply(s);
+    });
+  }
+
+  var accentInput=document.querySelector('.accent-picker');
+  if(accentInput){
+    accentInput.value=s.accent||'#FF6B00';
+    accentInput.addEventListener('input',function(){
+      s.accent=accentInput.value;
+      save(s);apply(s);
+    });
+  }
+
+  var resetBtn=document.querySelector('.settings-reset');
+  if(resetBtn){
+    resetBtn.addEventListener('click',function(){
+      s=Object.assign({},DEFAULTS);
+      save(s);apply(s);
+      document.querySelectorAll('.bg-sw').forEach(function(o){o.classList.toggle('on',o.dataset.bg===s.bg);});
+      document.querySelectorAll('.font-sw').forEach(function(o){o.classList.toggle('on',o.dataset.font===s.font);});
+      document.querySelectorAll('.density-btn').forEach(function(o){o.classList.toggle('on',o.dataset.density===s.density);});
+      if(darkSw) darkSw.classList.toggle('on',false);
+      if(accentInput) accentInput.value='#FF6B00';
+    });
+  }
+})();
+</script><script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('service-worker.js').then(function(reg){if(reg)reg.update();}).catch(function(){});});}</script></body></html>
