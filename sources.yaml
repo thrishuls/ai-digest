@@ -1,6 +1,6 @@
 # RSS feeds for the AI Daily Digest.
-# region: "india" or "global". Used to bias the 65/35 split and as a fallback
-# signal when the LLM cannot confidently classify India-relevance.
+# region: "india" or "global". Used to bias toward Indian AI coverage; global
+# feeds serve as a fallback pool when Indian AI news is sparse on a given day.
 
 feeds:
   # ---------- India (8) ----------

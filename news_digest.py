@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """AI Daily Digest — editorial-magazine static site.
 
-Pulls RSS feeds, dedupes, scores, picks the top 12 stories (65% India / 35%
-global), rewrites them with editorial copy, computes auxiliary modules
+Pulls RSS feeds, dedupes, scores, picks the top 12 stories (Indian AI news
+prioritised, with international AI as fallback when Indian coverage is sparse),
+rewrites them with editorial copy, computes auxiliary modules
 (trending, companies, stats), and writes a static HTML page to docs/ that
 mirrors the high-fidelity design handoff.
 
@@ -33,7 +34,7 @@ MAX_PER_FEED = 20
 FRESHNESS_HOURS = 28
 BATCH_SIZE = 20
 FINAL_COUNT = 12
-INDIA_SHARE = 0.65
+INDIA_SHARE = 1.0
 SIMILARITY_THRESHOLD = 0.82
 LLM_TIMEOUT = 45
 ARCHIVE_KEEP = 60
@@ -178,11 +179,14 @@ def _canon_url(u: str) -> str:
 # =========================================================================
 # Stage 3 — Score
 # =========================================================================
-SCORING_RUBRIC = """You score AI/tech news articles for a daily digest with a bias toward India.
+SCORING_RUBRIC = """You score AI/tech news articles for an India-first AI daily digest.
 
 For EACH article, return JSON with these exact keys:
 - is_ai (boolean): true only if the story is primarily about AI/ML/generative AI/LLMs. Return false for general tech, crypto, gadgets, non-AI business news.
-- india_relevance (0.0 to 1.0): 1.0 = India-specific story. 0.0 = no India angle.
+- india_relevance (0.0 to 1.0): how directly the story is about Indian AI. Score it as one of three anchors:
+    1.0 — Story is centrally about: (a) an AI company headquartered in India (e.g. Sarvam, Krutrim, Yellow.ai, Fractal, TWO AI); OR (b) AI research/engineering work led by an Indian-based team or by named Indian researchers (regardless of where they are physically based); OR (c) Indian government, ministry, regulator, or state-level AI policy / regulation / initiative (MeitY, RBI, NITI Aayog, IndiaAI Mission, state AI missions).
+    0.5 — Significant secondary India angle: a foreign company's product launch in India, a foreign AI deal involving an Indian enterprise, an Indian-authored paper that is one of several authors at a non-Indian lab.
+    0.0 — No India angle, OR the only India connection is that an executive of a non-Indian company is of Indian origin (e.g. Sundar Pichai at Google, Satya Nadella at Microsoft, Arvind Krishna at IBM, Parag Agrawal). Diaspora executives running foreign companies do NOT make a story India-relevant — judge by the company and the work, not by names.
 - impact_score (0-10): use the rubric below.
 - trending_score (0-10): newsworthiness and likely discussion volume.
 - category: one of ["policy", "funding", "model_release", "product", "research", "acquisition", "enterprise", "other"]
